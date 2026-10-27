@@ -9,7 +9,7 @@ What each Briareus client offers, feature by feature, against the server API (/a
 | --- | --- | --- | --- | --- |
 | ● full | 62 | 77 | 58 | 30 |
 | ◐ partial | 4 | 1 | 0 | 8 |
-| · none | 27 | 15 | 34 | 54 |
+| · none | 28 | 16 | 35 | 55 |
 | – n/a | 1 | 1 | 2 | 2 |
 
 ## Connection & pairing
@@ -28,6 +28,7 @@ What each Briareus client offers, feature by feature, against the server API (/a
 | Feature | Windows | Mac | iPhone/iPad | Quest | Notes |
 | --- | :---: | :---: | :---: | :---: | --- |
 | **Projects and conversations**<br>Browse the token's projects and their conversations with state, provider, branch and age. Wireframe: [conversation](wireframes/conversation.svg) | ● | ● | ● | ● | **Quest:** Also nests orchestrator workers and counts what waits per project. |
+| **All sessions across projects**<br>Select All above the projects to browse accessible sessions together, with a project label on every row; proposed UI, no client implementation. Wireframe: [all-sessions](wireframes/all-sessions.svg) | · | · | · | · |  |
 | **Bulk close/delete**<br>Tick several conversations and close or delete them at once. Wireframe: [conversation](wireframes/conversation.svg) | ● | ● | ● | · |  |
 | **Start a conversation**<br>Start a session on a chosen branch, provider, model and effort, or the project default, optionally with the review loop. Wireframe: [conversation](wireframes/conversation.svg) | ● | ● | ● | ● |  |
 | **Worktree / Local / Orchestrator**<br>Choose the workspace mode, including a local checkout or an orchestrator that runs workers. Wireframe: [conversation](wireframes/conversation.svg) | ● | ● | · | · | **iPhone/iPad:** No workspace picker; README says epics/orchestrators are started from the Mac. |

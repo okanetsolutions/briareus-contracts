@@ -160,6 +160,25 @@
           ]
         },
         {
+          "id": "all-sessions",
+          "title": "All sessions across projects",
+          "description": "Select All above the projects to browse accessible sessions together, with a project label on every row; proposed UI, no client implementation.",
+          "api": [
+            "GET /projects",
+            "GET /sessions"
+          ],
+          "support": {
+            "windows": "none",
+            "mac": "none",
+            "ios": "none",
+            "quest": "none"
+          },
+          "notes": {},
+          "wireframes": [
+            "all-sessions"
+          ]
+        },
+        {
           "id": "bulk-select",
           "title": "Bulk close/delete",
           "description": "Tick several conversations and close or delete them at once.",

@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1470" viewBox="0 0 1900 1470" role="img" aria-labelledby="title"><title id="title">All sessions: proposed project entry, wide and narrow views</title><rect width="100%" height="100%" fill="white"/><text x="40" y="16" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="22" fill="#303030"><tspan x="40" dy="22">All sessions / proposed shared client view</tspan></text>
+<text x="40" y="64" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="40" dy="14">Wide / at least layout.narrowWidth (1024px)</tspan></text>
+<rect x="40" y="90" width="1400" height="820" fill="#ffffff" stroke="#303030"/>
+<rect x="40" y="90" width="268" height="820" fill="#eeeeee" stroke="#303030"/>
+<text x="54" y="108" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="16" fill="#303030"><tspan x="54" dy="16">+ New session</tspan></text>
+<text x="54" y="143" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="54" dy="13">WhatsApp  Mail  Dashboard</tspan></text>
+<text x="54" y="193" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="54" dy="14">&lt; All projects</tspan></text>
+<text x="54" y="229" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="22" fill="#303030"><tspan x="54" dy="22">All</tspan></text>
+<text x="264" y="235" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="16" fill="#303030"><tspan x="264" dy="16">24</tspan></text>
+<rect x="50" y="281" width="248" height="109" fill="#dddddd" stroke="#303030"/>
+<text x="58" y="291" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="58" dy="13">● Fix the rate calculator</tspan></text>
+<text x="58" y="315" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="58" dy="14">Project A</tspan></text>
+<text x="58" y="339" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="58" dy="12">claude / fix-rate</tspan></text>
+<text x="58" y="361" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="58" dy="12">running / 2m ago</tspan></text>
+<rect x="50" y="400" width="248" height="109" fill="#f5f5f5" stroke="#303030"/>
+<text x="58" y="410" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="58" dy="13">● Update contract tokens</tspan></text>
+<text x="58" y="434" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="58" dy="14">Project B</tspan></text>
+<text x="58" y="458" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="58" dy="12">codex / tokens</tspan></text>
+<text x="58" y="480" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="58" dy="12">waiting / 8m ago</tspan></text>
+<rect x="50" y="519" width="248" height="109" fill="#f5f5f5" stroke="#303030"/>
+<text x="58" y="529" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="58" dy="13">● Add the deposit screen</tspan></text>
+<text x="58" y="553" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="58" dy="14">Project A</tspan></text>
+<text x="58" y="577" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="58" dy="12">claude / deposit</tspan></text>
+<text x="58" y="599" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="58" dy="12">idle / 1h ago</tspan></text>
+<rect x="50" y="638" width="248" height="109" fill="#f5f5f5" stroke="#303030"/>
+<text x="58" y="648" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="58" dy="13">● Upgrade the mail client</tspan></text>
+<text x="58" y="672" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="58" dy="14">Project C</tspan></text>
+<text x="58" y="696" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="58" dy="12">codex / mail</tspan></text>
+<text x="58" y="718" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="58" dy="12">closed / 3h ago</tspan></text>
+<text x="54" y="786" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="54" dy="12">More sessions / scroll</tspan></text>
+<text x="54" y="840" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="54" dy="13">Select  Settings  Sign out</tspan></text>
+<text x="54" y="875" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="54" dy="13">theme.sidebar</tspan></text>
+<text x="326" y="112" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="22" fill="#303030"><tspan x="326" dy="22">Fix the rate calculator</tspan></text>
+<text x="326" y="150" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="326" dy="14">Project A / claude / fix-rate / running</tspan></text>
+<text x="326" y="182" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="326" dy="13">Browser   Webhook   Stop   Close   Delete</tspan></text>
+<rect x="326" y="242" width="824" height="94" fill="#eeeeee" stroke="#303030"/>
+<text x="340" y="261" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="340" dy="14">Check how rounding affects the final rate.</tspan></text>
+<text x="326" y="374" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="326" dy="14">I am checking the calculation and its callers.</tspan></text>
+<text x="326" y="419" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="326" dy="14">&gt; Tool activity / existing transcript</tspan></text>
+<text x="326" y="607" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="326" dy="14">Conversation stays attached to Project A.</tspan></text>
+<text x="326" y="694" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="326" dy="13">Project A / fix-rate / claude / opus / high</tspan></text>
+<rect x="326" y="735" width="824" height="100" fill="#eeeeee" stroke="#303030"/>
+<text x="340" y="750" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="340" dy="14">Reply...</tspan></text>
+<text x="340" y="800" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="340" dy="13">Attach   Voice                                  Send</tspan></text>
+<text x="326" y="873" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="326" dy="13">theme.canvas / layout.paneMargin = 18px</tspan></text>
+<rect x="1168" y="90" width="272" height="820" fill="#f5f5f5" stroke="#303030"/>
+<text x="1182" y="112" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="18" fill="#303030"><tspan x="1182" dy="18">Pull request</tspan></text>
+<text x="1182" y="153" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="1182" dy="14">Project A / PR #123</tspan></text>
+<text x="1182" y="194" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="1182" dy="14">Checks / Reviews</tspan></text>
+<text x="1182" y="235" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="1182" dy="14">Findings</tspan></text>
+<text x="1182" y="276" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="1182" dy="14">Context usage</tspan></text>
+<text x="1182" y="850" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="1182" dy="13">theme.sunken</tspan></text>
+<text x="1182" y="875" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="1182" dy="13">layout.panelWidth 272px</tspan></text>
+<text x="1480" y="64" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="1480" dy="14">Narrow / one pane below 1024px</tspan></text>
+<rect x="1480" y="90" width="390" height="820" fill="#ffffff" stroke="#303030"/>
+<rect x="1480" y="90" width="390" height="820" fill="#eeeeee" stroke="#303030"/>
+<text x="1494" y="108" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="16" fill="#303030"><tspan x="1494" dy="16">+ New session</tspan></text>
+<text x="1494" y="143" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="1494" dy="13">WhatsApp  Mail  Dashboard</tspan></text>
+<text x="1494" y="193" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="1494" dy="14">&lt; All projects</tspan></text>
+<text x="1494" y="229" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="22" fill="#303030"><tspan x="1494" dy="22">All</tspan></text>
+<text x="1826" y="235" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="16" fill="#303030"><tspan x="1826" dy="16">24</tspan></text>
+<rect x="1490" y="281" width="370" height="109" fill="#dddddd" stroke="#303030"/>
+<text x="1498" y="291" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="1498" dy="13">● Fix the rate calculator</tspan></text>
+<text x="1498" y="315" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="1498" dy="14">Project A</tspan></text>
+<text x="1498" y="339" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="1498" dy="12">claude / fix-rate</tspan></text>
+<text x="1498" y="361" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="1498" dy="12">running / 2m ago</tspan></text>
+<rect x="1490" y="400" width="370" height="109" fill="#f5f5f5" stroke="#303030"/>
+<text x="1498" y="410" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="1498" dy="13">● Update contract tokens</tspan></text>
+<text x="1498" y="434" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="1498" dy="14">Project B</tspan></text>
+<text x="1498" y="458" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="1498" dy="12">codex / tokens</tspan></text>
+<text x="1498" y="480" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="1498" dy="12">waiting / 8m ago</tspan></text>
+<rect x="1490" y="519" width="370" height="109" fill="#f5f5f5" stroke="#303030"/>
+<text x="1498" y="529" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="1498" dy="13">● Add the deposit screen</tspan></text>
+<text x="1498" y="553" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="1498" dy="14">Project A</tspan></text>
+<text x="1498" y="577" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="1498" dy="12">claude / deposit</tspan></text>
+<text x="1498" y="599" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="1498" dy="12">idle / 1h ago</tspan></text>
+<rect x="1490" y="638" width="370" height="109" fill="#f5f5f5" stroke="#303030"/>
+<text x="1498" y="648" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="1498" dy="13">● Upgrade the mail client</tspan></text>
+<text x="1498" y="672" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="1498" dy="14">Project C</tspan></text>
+<text x="1498" y="696" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="1498" dy="12">codex / mail</tspan></text>
+<text x="1498" y="718" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="1498" dy="12">closed / 3h ago</tspan></text>
+<text x="1494" y="786" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="12" fill="#303030"><tspan x="1494" dy="12">More sessions / scroll</tspan></text>
+<text x="1494" y="840" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="1494" dy="13">Select  Settings  Sign out</tspan></text>
+<text x="1494" y="875" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="1494" dy="13">theme.sidebar</tspan></text>
+<text x="40" y="974" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="40" dy="14">Entry / project list</tspan></text>
+<rect x="40" y="1000" width="268" height="310" fill="#ffffff" stroke="#303030"/>
+<rect x="40" y="1000" width="268" height="310" fill="#eeeeee" stroke="#303030"/>
+<text x="54" y="1018" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="16" fill="#303030"><tspan x="54" dy="16">+ New session</tspan></text>
+<text x="54" y="1060" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="18" fill="#303030"><tspan x="54" dy="18">Projects</tspan></text>
+<rect x="50" y="1100" width="248" height="39" fill="#dddddd" stroke="#303030"/>
+<text x="64" y="1109" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="64" dy="13">All                    24</tspan></text>
+<text x="64" y="1161" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="64" dy="13">Project A              12</tspan></text>
+<text x="64" y="1200" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="64" dy="13">Project B               7</tspan></text>
+<text x="64" y="1239" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="64" dy="13">Project C               5</tspan></text>
+<text x="54" y="1283" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="13" fill="#303030"><tspan x="54" dy="13">layout.sidebarWidth 268px</tspan></text>
+<text x="350" y="1000" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="20" fill="#303030"><tspan x="350" dy="20">Behavior and platform notes</tspan></text>
+<text x="350" y="1046" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="350" dy="14">Select All above the projects to open the combined session list shown above.</tspan></text>
+<text x="350" y="1075" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="350" dy="14">Each row names its project; status/PR glyph, provider, branch and age follow the existing list.</tspan></text>
+<text x="350" y="1104" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="350" dy="14">Only sessions accessible to the current token on the connected server are included.</tspan></text>
+<text x="350" y="1133" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="350" dy="14">Opening a session uses its real project. Back preserves All and its scroll position.</tspan></text>
+<text x="350" y="1162" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="350" dy="14">All has no project tabs. New session requires a real project in the existing picker.</tspan></text>
+<text x="350" y="1191" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="350" dy="14">Windows/Mac: sidebar beside conversation; iPhone/narrow iPad: projects &gt; All &gt; conversation.</tspan></text>
+<text x="350" y="1220" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="350" dy="14">Quest: separate list/conversation panels, headset.type sizing and existing worker nesting.</tspan></text>
+<text x="350" y="1249" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="350" dy="14">Loading sessions... / No sessions across your projects yet. / Could not load sessions. Retry</tspan></text>
+<text x="350" y="1278" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="350" dy="14">Counts and contents are examples; the scrollable list shows four of the 24 sessions.</tspan></text>
+<text x="40" y="1360" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="40" dy="14">Reference: Windows shell at 35f7d87. All and project labels are proposed additions; see all-sessions.md.</tspan></text>
+<text x="40" y="1394" xml:space="preserve" style="white-space:pre" font-family="monospace" font-size="14" fill="#303030"><tspan x="40" dy="14">Shared theme.* and layout.* roles apply. Existing conversation controls: conversation.svg.</tspan></text></svg>
