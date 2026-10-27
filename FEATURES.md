@@ -7,9 +7,9 @@ What each Briareus client offers, feature by feature, against the server API (/a
 
 | | Windows | Mac | iPhone/iPad | Quest |
 | --- | --- | --- | --- | --- |
-| ● full | 60 | 78 | 59 | 30 |
+| ● full | 60 | 79 | 59 | 30 |
 | ◐ partial | 6 | 1 | 0 | 8 |
-| · none | 28 | 15 | 34 | 55 |
+| · none | 30 | 16 | 36 | 57 |
 | – n/a | 1 | 1 | 2 | 2 |
 
 ## Connection & pairing
@@ -28,6 +28,7 @@ What each Briareus client offers, feature by feature, against the server API (/a
 | Feature | Windows | Mac | iPhone/iPad | Quest | Notes |
 | --- | :---: | :---: | :---: | :---: | --- |
 | **Projects and conversations**<br>Browse the token's projects and their conversations with state, provider, branch and age. Wireframe: [conversation](wireframes/conversation.svg) | ● | ● | ● | ● | **Quest:** Also nests orchestrator workers and counts what waits per project. |
+| **All sessions across projects**<br>Select All above the projects to browse accessible sessions together, with a project label on every row; proposed UI, no client implementation. Wireframe: [all-sessions](wireframes/all-sessions.svg) | · | · | · | · |  |
 | **Bulk close/delete**<br>Tick several conversations and close or delete them at once. Wireframe: [conversation](wireframes/conversation.svg) | ● | ● | ● | · |  |
 | **Start a conversation**<br>Start a session on a chosen branch, provider, model and effort, or the project default, optionally with the review loop. Wireframe: [conversation](wireframes/conversation.svg) | ● | ● | ● | ● |  |
 | **Worktree / Local / Orchestrator**<br>Choose the workspace mode, including a local checkout or an orchestrator that runs workers. Wireframe: [conversation](wireframes/conversation.svg) | ● | ● | · | · | **iPhone/iPad:** No workspace picker; README says epics/orchestrators are started from the Mac. |
@@ -67,6 +68,7 @@ What each Briareus client offers, feature by feature, against the server API (/a
 | **Link a pull request**<br>Attach a PR to a session after the server checks the branch. | · | · | · | · | **Windows:** Route is in the table but unused by the UI. |
 | **Recover interrupted session**<br>Inspect what an interrupted session left in its workspace and resume from it. | · | ● | · | · |  |
 | **Session webhook**<br>Arm a session's webhook, set caps (Turns in a row 0 for no limit), copy URLs/keys and rotate keys (Admin). Wireframe: [webhook](wireframes/webhook.svg) | ◐ | ● | ● | · | **Windows:** Turns in a row still takes 1 to 1000; the server takes 0 for no limit since core #158. |
+| **Session mail wake**<br>Set the rules under which new inbox mail in a connected mailbox wakes a session (mailbox, To/Cc, From, Subject), with Wakes an hour and Turns in a row caps (Admin, projects with mail tools on). | · | ● | · | · | **iPhone/iPad:** The iPhone app has no mail features to pick a rule's mailbox from. |
 
 ## Pull requests
 
@@ -220,4 +222,3 @@ What each Briareus client offers, feature by feature, against the server API (/a
 - **deployments.config (read):** `GET /deployments/config`
 - **home-assistant:** `GET /home-assistant`, `GET /home-assistant/entities`, `GET /home-assistant/entities/{id}`, `GET /home-assistant/services`, `POST /home-assistant/services/{domain}/{service}`, `POST /home-assistant/events/{type}` — Admin-only bridge merged in Core #147; proposed client wireframes, support checked on 2026-10-12.
 - **sessions.files:** `POST /sessions/{id}/files` — Publish a downloadable session file (core #149); assistant links to workspace files already arrive as download URLs.
-- **sessions.mailWake:** `GET /sessions/{id}/mail-wake`, `PUT /sessions/{id}/mail-wake` — Per-session email wake rules (core #159), Admin.

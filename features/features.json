@@ -160,6 +160,25 @@
           ]
         },
         {
+          "id": "all-sessions",
+          "title": "All sessions across projects",
+          "description": "Select All above the projects to browse accessible sessions together, with a project label on every row; proposed UI, no client implementation.",
+          "api": [
+            "GET /projects",
+            "GET /sessions"
+          ],
+          "support": {
+            "windows": "none",
+            "mac": "none",
+            "ios": "none",
+            "quest": "none"
+          },
+          "notes": {},
+          "wireframes": [
+            "all-sessions"
+          ]
+        },
+        {
           "id": "bulk-select",
           "title": "Bulk close/delete",
           "description": "Tick several conversations and close or delete them at once.",
@@ -625,6 +644,24 @@
           "wireframes": [
             "webhook"
           ]
+        },
+        {
+          "id": "session-mail-wake",
+          "title": "Session mail wake",
+          "description": "Set the rules under which new inbox mail in a connected mailbox wakes a session (mailbox, To/Cc, From, Subject), with Wakes an hour and Turns in a row caps (Admin, projects with mail tools on).",
+          "api": [
+            "GET /sessions/{id}/mail-wake",
+            "PUT /sessions/{id}/mail-wake"
+          ],
+          "support": {
+            "windows": "none",
+            "mac": "full",
+            "ios": "none",
+            "quest": "none"
+          },
+          "notes": {
+            "ios": "The iPhone app has no mail features to pick a rule's mailbox from."
+          }
         }
       ]
     },
@@ -2113,14 +2150,6 @@
         "POST /sessions/{id}/files"
       ],
       "note": "Publish a downloadable session file (core #149); assistant links to workspace files already arrive as download URLs."
-    },
-    {
-      "group": "sessions.mailWake",
-      "routes": [
-        "GET /sessions/{id}/mail-wake",
-        "PUT /sessions/{id}/mail-wake"
-      ],
-      "note": "Per-session email wake rules (core #159), Admin."
     }
   ]
 }
