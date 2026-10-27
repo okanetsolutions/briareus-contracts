@@ -32,6 +32,10 @@ One wireframe per screen, not one per platform, for every screen of the Windows 
 | Settings · Database pool, SSH servers, Forge accounts | [`settings-servers.excalidraw`](settings-servers.excalidraw) · [preview](settings-servers.svg) | Database pool, SSH servers, Forge accounts |
 | Settings · This computer, Mail, MCP servers | [`settings.excalidraw`](settings.excalidraw) · [preview](settings.svg) | Mail accounts, MCP servers, Meeting assistant |
 
+## All sessions proposal
+
+The [All sessions preview](all-sessions.svg) and [editable scene](all-sessions.excalidraw) add **All** above the individual projects, opening a combined session list with a project label on every row. Wide and narrow layouts follow the existing Windows navigation. See [behavior, platform notes and source revision](all-sessions.md). This is a proposed client feature; regenerate both files with `node scripts/all-sessions-wireframes.mjs`.
+
 ## Home Assistant proposals
 
 Core's Home Assistant bridge is merged, but no client implements it yet. These proposed screens use the Windows shell and the bridge's existing API. See [behavior and source revisions](home-assistant.md).
