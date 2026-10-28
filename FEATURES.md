@@ -7,9 +7,9 @@ What each Briareus client offers, feature by feature, against the server API (/a
 
 | | Windows | Mac | iPhone/iPad | Quest |
 | --- | --- | --- | --- | --- |
-| ● full | 60 | 78 | 58 | 30 |
+| ● full | 60 | 79 | 59 | 30 |
 | ◐ partial | 6 | 1 | 0 | 8 |
-| · none | 29 | 16 | 36 | 56 |
+| · none | 30 | 16 | 36 | 57 |
 | – n/a | 1 | 1 | 2 | 2 |
 
 ## Connection & pairing
@@ -123,6 +123,7 @@ What each Briareus client offers, feature by feature, against the server API (/a
 | --- | :---: | :---: | :---: | :---: | --- |
 | **Spend dashboard**<br>See spend over a window by project, activity, provider and model, with costliest sessions and filters. Wireframe: [dashboard](wireframes/dashboard.svg) | ● | ● | ● | · | **Windows:** Needs an Admin token (/usage/all only); others are told so. **iPhone/iPad:** Non-admin tokens see this month's own spend. |
 | **Provider quotas**<br>See each provider account's login state and quota windows. Wireframe: [settings-providers](wireframes/settings-providers.svg) | ◐ | ● | ● | · | **Windows:** Per provider on its Settings Status tab only. **iPhone/iPad:** On the Usage tab, and per provider in Settings. |
+| **Resource stats**<br>See what each open session costs the machine (CPU, memory, processes, workspace disk, the last hour) and a server dashboard of the machine, the Briareus process, its disks and every open session. | · | ● | ● | · | **Mac:** Resources from the conversation header; the Server dashboard from ◉ Status. **iPhone/iPad:** Resources from the conversation's menu; the Server dashboard from the Findings tab's status. |
 
 ## Settings
 
@@ -221,4 +222,3 @@ What each Briareus client offers, feature by feature, against the server API (/a
 - **deployments.config (read):** `GET /deployments/config`
 - **home-assistant:** `GET /home-assistant`, `GET /home-assistant/entities`, `GET /home-assistant/entities/{id}`, `GET /home-assistant/services`, `POST /home-assistant/services/{domain}/{service}`, `POST /home-assistant/events/{type}` — Admin-only bridge merged in Core #147; proposed client wireframes, support checked on 2026-10-12.
 - **sessions.files:** `POST /sessions/{id}/files` — Publish a downloadable session file (core #149); assistant links to workspace files already arrive as download URLs.
-- **stats:** `GET /sessions/{id}/stats`, `GET /stats/sessions`, `GET /stats/server` — CPU, memory, process and disk figures per session and for the server, with an hour of history (core #160).
