@@ -2341,19 +2341,19 @@
         {
           "id": "home-assistant-connection",
           "title": "Home Assistant connection",
-          "description": "Check the server-configured bridge with an admin token.",
+          "description": "Check your Home Assistant connection: your own, connected with PUT /me/home-assistant, or the server's for the original operator.",
           "api": [
             "GET /home-assistant"
           ],
           "support": {
-            "windows": "full",
+            "windows": "partial",
             "mac": "none",
             "ios": "none",
             "android": "none",
             "quest": "none"
           },
           "notes": {
-            "windows": "Settings → Smart home, Admin token.",
+            "windows": "Settings → Smart home shows the connection state, for Admin tokens only; no form to connect your own Home Assistant (PUT /me/home-assistant).",
             "mac": "Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections.",
             "ios": "Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections."
           },
@@ -2377,7 +2377,7 @@
             "quest": "none"
           },
           "notes": {
-            "windows": "Polls entity states every ten seconds while visible."
+            "windows": "Polls entity states every ten seconds while visible. Admin tokens only, although the server allows read (and manage for actions and events)."
           },
           "wireframes": [
             "home-assistant"
@@ -2398,7 +2398,9 @@
             "android": "none",
             "quest": "none"
           },
-          "notes": {},
+          "notes": {
+            "windows": "Admin tokens only, although the server allows read (and manage for actions and events)."
+          },
           "wireframes": [
             "home-assistant-action",
             "home-assistant"
@@ -2418,7 +2420,9 @@
             "android": "none",
             "quest": "none"
           },
-          "notes": {},
+          "notes": {
+            "windows": "Admin tokens only, although the server allows read (and manage for actions and events)."
+          },
           "wireframes": [
             "home-assistant-event"
           ]

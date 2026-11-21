@@ -7,8 +7,8 @@ What each Briareus client offers, feature by feature, against the server API (/a
 
 | | Windows | Mac | iPhone/iPad | Android | Quest |
 | --- | --- | --- | --- | --- | --- |
-| ● full | 76 | 89 | 67 | 33 | 28 |
-| ◐ partial | 4 | 1 | 3 | 11 | 7 |
+| ● full | 75 | 89 | 67 | 33 | 28 |
+| ◐ partial | 5 | 1 | 3 | 11 | 7 |
 | · none | 28 | 18 | 38 | 64 | 73 |
 | – n/a | 1 | 1 | 1 | 1 | 1 |
 
@@ -210,10 +210,10 @@ What each Briareus client offers, feature by feature, against the server API (/a
 
 | Feature | Windows | Mac | iPhone/iPad | Android | Quest | Notes |
 | --- | :---: | :---: | :---: | :---: | :---: | --- |
-| **Home Assistant connection**<br>Check the server-configured bridge with an admin token. Wireframe: [home-assistant-connection](wireframes/home-assistant-connection.svg) | ● | · | · | · | · | **Windows:** Settings → Smart home, Admin token. **Mac:** Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections. **iPhone/iPad:** Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections. |
-| **Home Assistant entities**<br>Browse and filter entities, inspect their states and attributes, and poll while visible. Wireframe: [home-assistant](wireframes/home-assistant.svg) | ● | · | · | · | · | **Windows:** Polls entity states every ten seconds while visible. |
-| **Home Assistant actions**<br>Discover services, send service data, and inspect receipts without automatic retries. Wireframe: [home-assistant-action](wireframes/home-assistant-action.svg), [home-assistant](wireframes/home-assistant.svg) | ● | · | · | · | · |  |
-| **Home Assistant events**<br>Send an event to an existing Home Assistant automation; no event subscription. Wireframe: [home-assistant-event](wireframes/home-assistant-event.svg) | ● | · | · | · | · |  |
+| **Home Assistant connection**<br>Check your Home Assistant connection: your own, connected with PUT /me/home-assistant, or the server's for the original operator. Wireframe: [home-assistant-connection](wireframes/home-assistant-connection.svg) | ◐ | · | · | · | · | **Windows:** Settings → Smart home shows the connection state, for Admin tokens only; no form to connect your own Home Assistant (PUT /me/home-assistant). **Mac:** Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections. **iPhone/iPad:** Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections. |
+| **Home Assistant entities**<br>Browse and filter entities, inspect their states and attributes, and poll while visible. Wireframe: [home-assistant](wireframes/home-assistant.svg) | ● | · | · | · | · | **Windows:** Polls entity states every ten seconds while visible. Admin tokens only, although the server allows read (and manage for actions and events). |
+| **Home Assistant actions**<br>Discover services, send service data, and inspect receipts without automatic retries. Wireframe: [home-assistant-action](wireframes/home-assistant-action.svg), [home-assistant](wireframes/home-assistant.svg) | ● | · | · | · | · | **Windows:** Admin tokens only, although the server allows read (and manage for actions and events). |
+| **Home Assistant events**<br>Send an event to an existing Home Assistant automation; no event subscription. Wireframe: [home-assistant-event](wireframes/home-assistant-event.svg) | ● | · | · | · | · | **Windows:** Admin tokens only, although the server allows read (and manage for actions and events). |
 
 ## Local device status (proposed client widget)
 

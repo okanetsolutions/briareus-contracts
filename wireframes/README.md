@@ -40,7 +40,7 @@ The [All sessions preview](all-sessions.svg) and [editable scene](all-sessions.e
 
 ## Home Assistant
 
-Windows ships a simpler version of these screens on core's Home Assistant bridge: three tabs (Entities, Actions, Events), the connection state as a status line, and a picked entity's JSON above the list instead of a Connection destination and a detail pane. The other clients do not have them yet. The drawings are the original proposal. See [behavior and source revisions](home-assistant.md).
+Windows ships a simpler version of these screens on core's Home Assistant bridge: a setup or disconnected message until the bridge connects, then a status line above three tabs (Entities, Actions, Events), and a picked entity's JSON above the list, instead of a Connection destination and a detail pane. The other clients do not have them yet. The drawings are the original proposal. See [behavior and source revisions](home-assistant.md).
 
 | Screen | File | Features |
 | --- | --- | --- |
