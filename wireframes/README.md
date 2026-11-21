@@ -40,7 +40,7 @@ The [All sessions preview](all-sessions.svg) and [editable scene](all-sessions.e
 
 ## Home Assistant
 
-Windows implements these screens on core's Home Assistant bridge; the other clients do not yet. They were drawn as proposals in the Windows shell before it shipped them. See [behavior and source revisions](home-assistant.md).
+Windows ships a simpler version of these screens on core's Home Assistant bridge: three tabs (Entities, Actions, Events), the connection state as a status line, and a picked entity's JSON above the list instead of a Connection destination and a detail pane. The other clients do not have them yet. The drawings are the original proposal. See [behavior and source revisions](home-assistant.md).
 
 | Screen | File | Features |
 | --- | --- | --- |
