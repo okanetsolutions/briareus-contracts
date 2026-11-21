@@ -3,7 +3,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 
 const root = new URL('..', import.meta.url);
 const data = JSON.parse(await readFile(new URL('features/features.json', root), 'utf8'));
-const NAMES = { windows: 'Windows', mac: 'Mac', ios: 'iPhone/iPad', quest: 'Quest' };
+const NAMES = { windows: 'Windows', mac: 'Mac', ios: 'iPhone/iPad', android: 'Android', quest: 'Quest' };
 const MARK = { full: '●', partial: '◐', none: '·', 'n/a': '–' };
 
 const all = data.areas.flatMap((a) => a.features);
@@ -27,8 +27,18 @@ for (const area of data.areas) {
   md += `## ${area.title}\n\n| Feature | ${data.clients.map((c) => NAMES[c]).join(' | ')} | Notes |\n| --- | ${data.clients.map(() => ':---:').join(' | ')} | --- |\n`;
   for (const f of area.features) {
     const notes = Object.entries(f.notes ?? {}).map(([c, n]) => `**${NAMES[c]}:** ${cell(n)}`).join(' ');
-    const wireframe = f.wireframes ? ` Wireframe: ${f.wireframes.map((w) => `[${w}](wireframes/${w}.svg)`).join(', ')}` : '';
+    const wireframe = f.wireframes ? ` Wireframe: ${f.wireframes.map((w) => `[${w}](wireframes/${w}.svg)`).join(', ')}` : f.undrawn ? ` Wireframe: ${f.undrawn.startsWith('Windows offers it') ? 'not drawn yet.' : cell(f.undrawn)}` : '';
     md += `| **${cell(f.title)}**<br>${cell(f.description)}${wireframe} | ${data.clients.map((c) => MARK[f.support[c]]).join(' | ')} | ${notes} |\n`;
+  }
+  md += '\n';
+}
+
+if ((data.retired ?? []).length) {
+  const withLeftovers = (data.retired ?? []).some((f) => Object.keys(f.leftovers ?? {}).length);
+  md += `## Retired features\n\nFeatures the server or every client has dropped.${withLeftovers ? ' Leftovers are calls or screens a client still carries.' : ''}\n\n| Feature | Why |${withLeftovers ? ' Leftovers |' : ''}\n| --- | --- |${withLeftovers ? ' --- |' : ''}\n`;
+  for (const f of data.retired ?? []) {
+    const left = Object.entries(f.leftovers ?? {}).map(([c, n]) => `**${NAMES[c]}:** ${cell(n)}`).join(' ');
+    md += `| **${cell(f.title)}** | ${cell(f.reason)} |${withLeftovers ? ` ${left} |` : ''}\n`;
   }
   md += '\n';
 }

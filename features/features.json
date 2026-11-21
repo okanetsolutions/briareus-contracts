@@ -1,10 +1,11 @@
 {
-  "$description": "What each Briareus client offers, feature by feature, against the server API (/api/v1). Support is full, partial, none, or n/a (the platform cannot, not merely does not). Audited from each client's code on 2026-10-11, and against the server's /api/v1 through core #166 on 2026-10-16; update it in the same pull request that adds or removes a feature in a client.",
-  "audited": "2026-10-16",
+  "$description": "What each Briareus client offers, feature by feature, against the server API (/api/v1). Support is full, partial, none, or n/a (the platform cannot, not merely does not). Audited from each client's code on 2026-11-21 (briareus-windows 70d3404, briareus-swift 385471c, briareus-android 84d2832, briareus-quest 28619fb) and against the server's /api/v1 at core c749e2a; update it in the same pull request that adds or removes a feature in a client.",
+  "audited": "2026-11-21",
   "clients": [
     "windows",
     "mac",
     "ios",
+    "android",
     "quest"
   ],
   "areas": [
@@ -24,6 +25,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
@@ -44,9 +46,12 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
-          "notes": {},
+          "notes": {
+            "android": "Catalog re-read on launch; a permission or project change clears the cache."
+          },
           "wireframes": [
             "pairing",
             "project-pulls",
@@ -64,11 +69,13 @@
             "windows": "none",
             "mac": "none",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
             "windows": "Sign-out forgets the token locally without revoking it on the server.",
-            "mac": "Sign-out (Store.forget) is local only; revoke_token is in the core table but unused by the Mac UI."
+            "mac": "Sign out is local only, and its message still points to web Settings, which no longer exists; tokens are revoked on the server with `npm run create-token -- --revoke`. revoke_token is in the core table but unused by the Mac UI.",
+            "quest": "From the sidebar's settings menu."
           }
         },
         {
@@ -82,9 +89,11 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
+            "android": "Encrypted on the device.",
             "quest": "Encrypted on the headset."
           },
           "wireframes": [
@@ -103,10 +112,12 @@
             "windows": "partial",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
-            "windows": "Polls with backoff; never opens /events or /sessions/{id}/events.",
+            "windows": "Screens poll with backoff; GET /events is opened only by the sleep-mode wall, and /sessions/{id}/events is never used.",
+            "mac": "Paused while offline (see Weak or lost connection).",
             "ios": "Foreground only: iOS closes the streams in the background and they catch up on return; polling carries on where the server lacks them."
           },
           "wireframes": [
@@ -122,15 +133,34 @@
             "windows": "full",
             "mac": "full",
             "ios": "n/a",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
             "ios": "Distributed via App Store/TestFlight.",
+            "android": "Signed APKs on GitHub releases, no in-app updater; Android could install updates.",
             "quest": "Sideloaded APK with no updater; Android could install updates."
           },
-          "wireframes": [
-            "conversation"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
+        },
+        {
+          "id": "weak-connection",
+          "title": "Weak or lost connection",
+          "description": "Say when the app is offline or cannot reach the server and since when the screen was saved; pause or slow polling and streams on a poor link and read every screen again when it returns.",
+          "api": [],
+          "support": {
+            "windows": "none",
+            "mac": "full",
+            "ios": "full",
+            "android": "partial",
+            "quest": "partial"
+          },
+          "notes": {
+            "windows": "Polls with backoff; no offline notice.",
+            "ios": "Also slows polling in Low Data Mode.",
+            "android": "Shows whether it is live, connecting or offline and reconnects with backoff; no saved-since notice.",
+            "quest": "Shows whether it is live, connecting or offline and reconnects with backoff; no saved-since notice."
+          }
         }
       ]
     },
@@ -150,9 +180,13 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
+            "mac": "Pinned first; an orchestrator's workers nest under it and fold.",
+            "ios": "Pinned first; an orchestrator's workers nest under it and fold.",
+            "android": "Also nests orchestrator workers and counts what waits per project.",
             "quest": "Also nests orchestrator workers and counts what waits per project."
           },
           "wireframes": [
@@ -171,6 +205,7 @@
             "windows": "none",
             "mac": "none",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {},
@@ -189,10 +224,13 @@
           "support": {
             "windows": "full",
             "mac": "full",
-            "ios": "full",
+            "ios": "none",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {},
+          "notes": {
+            "ios": "No multi-select on iPhone or iPad; a conversation's own menu closes or deletes it one at a time."
+          },
           "wireframes": [
             "conversation"
           ]
@@ -200,7 +238,7 @@
         {
           "id": "new-session",
           "title": "Start a conversation",
-          "description": "Start a session on a chosen branch, provider, model and effort, or the project default, optionally with the review loop.",
+          "description": "Start a session on a chosen branch, provider, model and effort, or the project default.",
           "api": [
             "GET /branches",
             "GET /runtimes",
@@ -210,9 +248,13 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
-          "notes": {},
+          "notes": {
+            "mac": "The review-loop option is gone (server dropped it).",
+            "ios": "The review-loop option is gone (server dropped it)."
+          },
           "wireframes": [
             "conversation"
           ]
@@ -227,15 +269,32 @@
           "support": {
             "windows": "full",
             "mac": "full",
-            "ios": "none",
+            "ios": "full",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
-            "ios": "No workspace picker; README says epics/orchestrators are started from the Mac."
+            "ios": "Worktree, Local or Orchestrator in New conversation; an epic cannot be started from the iPhone/iPad app."
           },
           "wireframes": [
             "conversation"
           ]
+        },
+        {
+          "id": "pin-session",
+          "title": "Pin conversations",
+          "description": "Pin or unpin a conversation so it leads its project's list.",
+          "api": [
+            "PATCH /sessions/{id}"
+          ],
+          "support": {
+            "windows": "none",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {}
         }
       ]
     },
@@ -255,6 +314,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {},
@@ -271,11 +331,13 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
-            "ios": "Tables also copy whole as Markdown.",
-            "mac": "Tables also copy whole as Markdown."
+            "mac": "Tables also copy whole as Markdown; image links preview inline.",
+            "ios": "Tables also copy whole as Markdown; image links preview inline.",
+            "android": "Tables also copy whole as Markdown."
           },
           "wireframes": [
             "conversation"
@@ -290,6 +352,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {},
@@ -305,20 +368,23 @@
             "GET /sessions/{id}"
           ],
           "support": {
-            "windows": "none",
+            "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {},
-          "wireframes": [
-            "conversation"
-          ]
+          "notes": {
+            "windows": "Working line names the background task, or counts several, from the session's backgroundTasks.",
+            "android": "Working line shows only the last tool.",
+            "quest": "Working line shows only the last tool."
+          },
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "session-panel",
           "title": "Session details panel",
-          "description": "See the conversation's pull request, checks, reviews, findings and context use beside it.",
+          "description": "See the conversation's pull request, checks, reviews and context use beside it.",
           "api": [
             "GET /sessions/{id}",
             "GET /pulls/{number}"
@@ -327,10 +393,13 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "partial",
             "quest": "partial"
           },
           "notes": {
-            "ios": "As a sheet rather than a side panel.",
+            "mac": "PR, commits, reviews, checks and context use; no findings any more.",
+            "ios": "As a sheet rather than a side panel; no findings any more.",
+            "android": "Session details dialog (project, status, runtime, branch, cost, id) and a PR link; no checks, reviews or context use.",
             "quest": "Opens the PR in a browser panel; no details side panel."
           },
           "wireframes": [
@@ -348,9 +417,29 @@
             "windows": "none",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {}
+          "notes": {
+            "mac": "Admin token."
+          }
+        },
+        {
+          "id": "reply-pictures",
+          "title": "Pictures in replies",
+          "description": "Pictures a reply links to show inline under the text that names them and open in a viewer.",
+          "api": [],
+          "support": {
+            "windows": "full",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {
+            "windows": "Pictures on other hosts load only after a click."
+          },
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
     },
@@ -369,6 +458,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {},
@@ -387,9 +477,11 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
+            "android": "System document picker only.",
             "quest": "System file picker only."
           },
           "wireframes": [
@@ -408,9 +500,13 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
+            "windows": "Sends POST /transcribe; does not call GET /transcribe.",
+            "ios": "Reads transcription availability from discovery, not GET /transcribe.",
+            "android": "Optional; appended to a keyboard text field.",
             "quest": "Primary input (no keyboard); read-only text area to check before sending."
           },
           "wireframes": [
@@ -428,6 +524,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {},
@@ -446,9 +543,11 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
+            "android": "Also from notifications and the status panel.",
             "quest": "Also from notifications and the status panel."
           },
           "wireframes": [
@@ -466,12 +565,17 @@
             "DELETE /prompts/{id}"
           ],
           "support": {
-            "windows": "none",
+            "windows": "full",
             "mac": "full",
-            "ios": "none",
+            "ios": "partial",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {}
+          "notes": {
+            "windows": "Picker in the composer, New session and Give feedback; insert, save, edit and delete.",
+            "ios": "Read-only: inserts saved prompts in errand input and CarPlay; no save, edit or delete, not in the conversation composer."
+          },
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "btw-side-question",
@@ -484,10 +588,30 @@
             "windows": "none",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
             "mac": "Sends a message starting with /btw (the server answers it the same way) rather than POST /sessions/{id}/btw; the question and answer show in the transcript."
+          }
+        },
+        {
+          "id": "uncertain-send-guard",
+          "title": "Guard uncertain sends",
+          "description": "When a send or session start fails without a clear answer, keep the draft and block another try until a refresh shows whether it went through.",
+          "api": [
+            "POST /sessions/{id}/messages",
+            "POST /sessions"
+          ],
+          "support": {
+            "windows": "none",
+            "mac": "none",
+            "ios": "none",
+            "android": "full",
+            "quest": "none"
+          },
+          "notes": {
+            "android": "Client-side guard kept in the cache; does not send `clientMessageId` yet."
           }
         }
       ]
@@ -507,6 +631,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {},
@@ -527,6 +652,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {},
@@ -545,6 +671,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "none"
           },
           "notes": {
@@ -566,27 +693,12 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "none"
           },
-          "notes": {},
-          "wireframes": [
-            "conversation"
-          ]
-        },
-        {
-          "id": "review-loop",
-          "title": "Review loop toggle",
-          "description": "Arm or disarm the automatic review loop on a session.",
-          "api": [
-            "POST /sessions/{id}/review-loop"
-          ],
-          "support": {
-            "windows": "full",
-            "mac": "full",
-            "ios": "full",
-            "quest": "full"
+          "notes": {
+            "android": "Each behind a confirmation."
           },
-          "notes": {},
           "wireframes": [
             "conversation"
           ]
@@ -594,7 +706,7 @@
         {
           "id": "qa-loop",
           "title": "QA loop toggle",
-          "description": "Arm automatic QA after the review loop passes.",
+          "description": "Arm an automatic QA run on a session.",
           "api": [
             "POST /sessions/{id}/qa-loop"
           ],
@@ -602,10 +714,13 @@
             "windows": "none",
             "mac": "none",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
-            "windows": "Route is in core/api.c's table but no screen calls it."
+            "windows": "Route is in core/api.c's table but no screen calls it.",
+            "mac": "qa_loop is in the core table but unused.",
+            "ios": "qa_loop is in the core table but unused."
           }
         },
         {
@@ -619,10 +734,13 @@
             "windows": "none",
             "mac": "none",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
-            "windows": "Route is in the table but unused by the UI."
+            "windows": "Route is in the table but unused by the UI.",
+            "mac": "link_pr is in the core table but unused.",
+            "ios": "link_pr is in the core table but unused."
           }
         },
         {
@@ -637,9 +755,12 @@
             "windows": "none",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {}
+          "notes": {
+            "mac": "Admin token."
+          }
         },
         {
           "id": "session-webhook",
@@ -651,13 +772,14 @@
             "POST /sessions/{id}/webhook/rotate"
           ],
           "support": {
-            "windows": "partial",
+            "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
-            "windows": "Turns in a row still takes 1 to 1000; the server takes 0 for no limit since core #158."
+            "windows": "Turns in a row now takes 0 to 1000, 0 for no limit."
           },
           "wireframes": [
             "webhook"
@@ -672,14 +794,17 @@
             "PUT /sessions/{id}/mail-wake"
           ],
           "support": {
-            "windows": "none",
+            "windows": "full",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
+            "windows": "✉ Mail wake in the conversation header edits rules and caps (Admin).",
             "ios": "The iPhone app has no mail features to pick a rule's mailbox from."
-          }
+          },
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
     },
@@ -698,9 +823,11 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
+            "android": "Filters by author or label only.",
             "quest": "Filters by author or label only."
           },
           "wireframes": [
@@ -716,12 +843,15 @@
             "GET /pulls/{number}/description"
           ],
           "support": {
-            "windows": "full",
+            "windows": "partial",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
-          "notes": {},
+          "notes": {
+            "windows": "Checks show only as passed/pending/failed counts and commits only as a count; the Checks and Commits tabs were retired."
+          },
           "wireframes": [
             "pull-request"
           ]
@@ -737,9 +867,11 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "none"
           },
           "notes": {
+            "android": "Paged files pinned to head/base with expandable patches; no line numbers.",
             "quest": "pull_files is only used by the voice assistant to summarize changes; no diff UI."
           },
           "wireframes": [
@@ -759,9 +891,11 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "partial",
             "quest": "partial"
           },
           "notes": {
+            "android": "Review states from the overview only; no comments or inline review comments.",
             "quest": "Review summary from the overview only."
           },
           "wireframes": [
@@ -774,16 +908,20 @@
           "description": "Serve a PR's branch and view the running app in an embedded browser, with Cloudflare Access handled.",
           "api": [
             "POST /pulls/{number}/serve",
-            "GET /preview/access",
-            "GET /sessions/{id}/preview"
+            "GET /preview/access"
           ],
           "support": {
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
+            "windows": "Finds the Run session through /sessions and POST /sessions/{id}/serve; does not call GET /sessions/{id}/preview.",
+            "mac": "Switches a running preview with POST /sessions/{id}/serve; never calls GET /sessions/{id}/preview.",
+            "ios": "Switches a running preview with POST /sessions/{id}/serve; never calls GET /sessions/{id}/preview.",
+            "android": "Preview opens in its own activity (WebView).",
             "quest": "Preview opens in its own panel."
           },
           "wireframes": [
@@ -802,6 +940,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
           "notes": {},
@@ -821,6 +960,7 @@
             "windows": "none",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {}
@@ -838,6 +978,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {},
@@ -845,25 +986,6 @@
             "pull-request",
             "project-pulls",
             "project-review-list"
-          ]
-        },
-        {
-          "id": "pr-babysitter",
-          "title": "Pull request babysitter",
-          "description": "Switch a project's babysitter on (Admin): every 15 minutes the server starts, once per head commit, the errand each open pull request needs (solve conflicts, else fix failing checks, else a recommended code review).",
-          "api": [
-            "GET /settings/projects",
-            "PUT /settings/projects/{id}"
-          ],
-          "support": {
-            "windows": "none",
-            "mac": "full",
-            "ios": "full",
-            "quest": "none"
-          },
-          "notes": {},
-          "wireframes": [
-            "settings-projects"
           ]
         },
         {
@@ -877,6 +999,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
@@ -901,6 +1024,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
           "notes": {},
@@ -912,7 +1036,7 @@
         {
           "id": "review-list",
           "title": "Review List",
-          "description": "A tab of PRs waiting on your review (required-dev-review / feedback-implemented).",
+          "description": "A tab of PRs waiting on your review (requires-dev-review / feedback-implemented).",
           "api": [
             "GET /pulls"
           ],
@@ -920,9 +1044,12 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {},
+          "notes": {
+            "windows": "Per project, a ✓ Review List tab on the project page."
+          },
           "wireframes": [
             "project-review-list"
           ]
@@ -938,6 +1065,7 @@
             "windows": "none",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {}
@@ -946,90 +1074,8 @@
     },
     {
       "id": "findings",
-      "title": "Findings & review triage",
+      "title": "Code reviews & approvals",
       "features": [
-        {
-          "id": "findings-queue",
-          "title": "Findings queue",
-          "description": "See every review round awaiting a decision across projects, grouped by PR, with a count.",
-          "api": [
-            "GET /sessions",
-            "GET /pulls/{number}/findings"
-          ],
-          "support": {
-            "windows": "full",
-            "mac": "full",
-            "ios": "full",
-            "quest": "partial"
-          },
-          "notes": {
-            "quest": "No cross-project findings screen; rounds surface as conversation states, notifications and the status panel."
-          },
-          "wireframes": [
-            "findings"
-          ]
-        },
-        {
-          "id": "triage-round",
-          "title": "Triage a held round",
-          "description": "Give each finding a verdict and comment, add a note and complete the round into the fix session.",
-          "api": [
-            "POST /sessions/{id}/findings/triage",
-            "POST /sessions/{id}/findings/save"
-          ],
-          "support": {
-            "windows": "full",
-            "mac": "full",
-            "ios": "full",
-            "quest": "full"
-          },
-          "notes": {
-            "quest": "Completes the round (triage) but never saves verdicts to the PR (findings/save)."
-          },
-          "wireframes": [
-            "findings"
-          ]
-        },
-        {
-          "id": "foreign-review-actions",
-          "title": "Reply/delete on others' reviews",
-          "description": "On a review of someone else's PR, reply on finding threads or delete findings.",
-          "api": [
-            "POST /sessions/{id}/findings/reply",
-            "POST /sessions/{id}/findings/delete"
-          ],
-          "support": {
-            "windows": "full",
-            "mac": "full",
-            "ios": "full",
-            "quest": "none"
-          },
-          "notes": {},
-          "wireframes": [
-            "findings"
-          ]
-        },
-        {
-          "id": "pr-finding-decisions",
-          "title": "Decide findings on a PR page",
-          "description": "Record fix/optional/dismiss on a PR's findings from the PR page and solve them.",
-          "api": [
-            "GET /pulls/{number}/findings",
-            "POST /pulls/{number}/findings/decision"
-          ],
-          "support": {
-            "windows": "full",
-            "mac": "full",
-            "ios": "full",
-            "quest": "partial"
-          },
-          "notes": {
-            "quest": "Findings are listed read-only on the PR page; no decision route."
-          },
-          "wireframes": [
-            "pull-request"
-          ]
-        },
         {
           "id": "approvals",
           "title": "SSH and Slack approvals",
@@ -1040,14 +1086,92 @@
             "POST /slack/requests/{id}/decision"
           ],
           "support": {
-            "windows": "none",
+            "windows": "partial",
             "mac": "full",
-            "ios": "none",
+            "ios": "full",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
-            "mac": "On the Findings screen, Admin token."
-          }
+            "windows": "SSH approvals only, in the Findings screen via GET /ssh/requests; no Slack approvals and GET /attention is not used for them.",
+            "mac": "On ◉ Status (Waiting on you), Admin token.",
+            "ios": "On the Status tab (Waiting on you), Admin token."
+          },
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
+        },
+        {
+          "id": "pr-code-reviews",
+          "title": "Stored code reviews",
+          "description": "List the code reviews Briareus ran on a pull request with cost and findings, mark one handled or reopen it, and overrule a finding's verdict with a reason.",
+          "api": [
+            "GET /pulls/{number}/code-reviews",
+            "PATCH /pulls/{number}/code-reviews/{id}",
+            "PATCH /pulls/{number}/code-reviews/{id}/findings/{findingId}"
+          ],
+          "support": {
+            "windows": "full",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {},
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
+        },
+        {
+          "id": "review-outcome",
+          "title": "Review outcome and security pass",
+          "description": "See what a pull request's code review amounts to (outcome, reasons, staleness, rounds) and its security pass: risk tier, coverage and security findings.",
+          "api": [
+            "GET /pulls/{number}/code-reviews"
+          ],
+          "support": {
+            "windows": "full",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {},
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
+        },
+        {
+          "id": "review-approvals",
+          "title": "Review approvals",
+          "description": "See the human approvals a pull request's risk tier asks for, record your approval of the reviewed head with a note, or withdraw one of yours.",
+          "api": [
+            "POST /pulls/{number}/approvals",
+            "POST /pulls/{number}/approvals/{approvalId}/withdraw"
+          ],
+          "support": {
+            "windows": "full",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {},
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
+        },
+        {
+          "id": "security-overview",
+          "title": "Security overview",
+          "description": "See the security review state of every open pull request across projects in one list.",
+          "api": [
+            "GET /pulls",
+            "GET /pulls/{number}/code-review-rounds"
+          ],
+          "support": {
+            "windows": "full",
+            "mac": "none",
+            "ios": "none",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {
+            "windows": "A Security screen opened from Status."
+          },
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
     },
@@ -1066,9 +1190,14 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "partial",
             "quest": "partial"
           },
           "notes": {
+            "windows": "Load more pages past the first 100 through GET /issues.",
+            "mac": "Load more pages past 100 issues with GET /issues.",
+            "ios": "Load more pages past 100 issues with GET /issues.",
+            "android": "Flat list of open issues (number, title, author); no filters, sub-issues or answering PRs.",
             "quest": "Only via the voice assistant's list_issues tool."
           },
           "wireframes": [
@@ -1087,10 +1216,12 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "partial",
             "quest": "partial"
           },
           "notes": {
             "windows": "Opens in a side panel over the board/PR.",
+            "android": "Title, state and Markdown body; no sub-issues, fields, linked PRs or timeline (timeline read only by the voice assistant).",
             "quest": "Voice reads issues; 'show issue' opens GitHub in the browser."
           },
           "wireframes": [
@@ -1109,9 +1240,11 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "partial"
           },
           "notes": {
+            "android": "Button on the issue page; also by voice (work_on_issue).",
             "quest": "Voice only (work_on_issue)."
           },
           "wireframes": [
@@ -1129,9 +1262,12 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "partial",
             "quest": "none"
           },
-          "notes": {},
+          "notes": {
+            "android": "Close as completed only, after a confirmation; no not-planned or comment."
+          },
           "wireframes": [
             "issue"
           ]
@@ -1148,10 +1284,12 @@
             "windows": "full",
             "mac": "full",
             "ios": "none",
+            "android": "partial",
             "quest": "none"
           },
           "notes": {
-            "ios": "README: 'The GitHub Projects board stays on the Mac app.'"
+            "ios": "README: 'The GitHub Projects board stays on the Mac app.'",
+            "android": "Read-only columns and cards; no moving cards (no POST /project-board/move)."
           },
           "wireframes": [
             "project-board"
@@ -1171,10 +1309,13 @@
             "windows": "full",
             "mac": "full",
             "ios": "none",
+            "android": "partial",
             "quest": "none"
           },
           "notes": {
-            "mac": "Also downloads /repo/archive for a local index."
+            "windows": "Does not call GET /repo/archive.",
+            "mac": "Also downloads /repo/archive for a local index; never calls GET /commits/{sha}.",
+            "android": "Default branch's tree only, files as plain monospace text without highlighting; no archive."
           },
           "wireframes": [
             "project-files"
@@ -1200,6 +1341,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
           "notes": {},
@@ -1222,6 +1364,7 @@
             "windows": "none",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
@@ -1244,6 +1387,7 @@
             "windows": "none",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {}
@@ -1265,6 +1409,7 @@
             "windows": "none",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {}
@@ -1286,12 +1431,15 @@
           "support": {
             "windows": "full",
             "mac": "full",
-            "ios": "full",
+            "ios": "partial",
+            "android": "partial",
             "quest": "none"
           },
           "notes": {
             "windows": "Needs an Admin token (/usage/all only); others are told so.",
-            "ios": "Non-admin tokens see this month's own spend."
+            "ios": "iPad only: the iPhone has no Usage tab. Non-admin tokens see this month's own spend.",
+            "android": "This month's cost, sessions, turns and tokens: all projects with an Admin token (/usage/all), else per project (/usage); no breakdowns, windows, filters or costliest sessions.",
+            "quest": "GET /usage is in the route table but no screen calls it."
           },
           "wireframes": [
             "dashboard"
@@ -1306,14 +1454,15 @@
             "GET /settings/providers/{id}/status"
           ],
           "support": {
-            "windows": "partial",
+            "windows": "full",
             "mac": "full",
-            "ios": "full",
+            "ios": "partial",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
-            "windows": "Per provider on its Settings Status tab only.",
-            "ios": "On the Usage tab, and per provider in Settings."
+            "windows": "Dashboard's Usage remaining per account lists every provider account's quota windows (reads Admin /settings/providers), plus each provider's Settings Status tab.",
+            "ios": "Quota panel on the iPad-only Usage tab; on iPhone only per provider in Settings (Admin)."
           },
           "wireframes": [
             "settings-providers"
@@ -1329,15 +1478,55 @@
             "GET /stats/server"
           ],
           "support": {
-            "windows": "none",
+            "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
+            "windows": "Conversation Resources screen and a Server resources dashboard opened from Status.",
             "mac": "Resources from the conversation header; the Server dashboard from ◉ Status.",
-            "ios": "Resources from the conversation's menu; the Server dashboard from the Findings tab's status."
-          }
+            "ios": "Resources from the conversation's menu; the Server dashboard from the Status tab."
+          },
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
+        },
+        {
+          "id": "ci-stats",
+          "title": "CI/CD statistics",
+          "description": "See CI success rate, failures and durations per day, repository and check, and page through recent runs, for every project or one.",
+          "api": [
+            "GET /stats/ci",
+            "GET /ci/runs"
+          ],
+          "support": {
+            "windows": "full",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {},
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
+        },
+        {
+          "id": "ssh-host-monitoring",
+          "title": "SSH host monitoring",
+          "description": "List registered SSH hosts with current resources and a 24-hour history, switch monitoring on or off, and issue or revoke a host's telemetry credential (Admin).",
+          "api": [
+            "GET /ssh/servers",
+            "GET /ssh/servers/{id}/resources",
+            "POST /settings/ssh/servers/{id}/monitor-token",
+            "DELETE /settings/ssh/servers/{id}/monitor-token"
+          ],
+          "support": {
+            "windows": "none",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {}
         }
       ]
     },
@@ -1360,9 +1549,14 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {},
+          "notes": {
+            "windows": "Includes the Code review tab's rules (security pass policy, outcome publishing, round limit).",
+            "mac": "Includes PR actions review rules (security pass, outcome publishing, benchmark, round limit) and printing.",
+            "ios": "Includes PR actions review rules (security pass, outcome publishing, benchmark, round limit) and printing."
+          },
           "wireframes": [
             "settings-projects"
           ]
@@ -1383,32 +1577,12 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
           "notes": {},
           "wireframes": [
             "settings-providers"
-          ]
-        },
-        {
-          "id": "settings-db-pool",
-          "title": "Database pool",
-          "description": "Manage and test the database servers sessions claim (Admin).",
-          "api": [
-            "GET /settings/db-servers",
-            "POST /settings/db-servers",
-            "PUT /settings/db-servers/{id}",
-            "POST /settings/db-servers/test"
-          ],
-          "support": {
-            "windows": "full",
-            "mac": "full",
-            "ios": "full",
-            "quest": "none"
-          },
-          "notes": {},
-          "wireframes": [
-            "settings-servers"
           ]
         },
         {
@@ -1425,9 +1599,12 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {},
+          "notes": {
+            "windows": "Also sets SSH and sudo passwords (write-only)."
+          },
           "wireframes": [
             "settings-servers"
           ]
@@ -1445,6 +1622,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
           "notes": {},
@@ -1465,6 +1643,7 @@
             "windows": "none",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
           "notes": {}
@@ -1483,6 +1662,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {},
@@ -1504,6 +1684,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {},
@@ -1528,9 +1709,12 @@
             "windows": "none",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {}
+          "notes": {
+            "mac": "Also resets a workspace slot's setup (POST /settings/workspaces/{slot}/reset-setup)."
+          }
         },
         {
           "id": "devices-tokens",
@@ -1541,14 +1725,93 @@
             "windows": "none",
             "mac": "none",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
-            "windows": "No /api/v1 route; tokens are issued on the server with npm run create-token.",
+            "windows": "No /api/v1 route; tokens are issued on the server with npm run create-token. Its pairing and dashboard screens still tell you to create a token on the web dashboard, which no longer exists.",
             "mac": "No /api/v1 route.",
             "ios": "No /api/v1 route.",
+            "android": "No /api/v1 route.",
             "quest": "No /api/v1 route."
           }
+        },
+        {
+          "id": "settings-github-accounts",
+          "title": "GitHub accounts",
+          "description": "Manage the GitHub accounts projects use, each with a write-only token and the projects it serves (Admin).",
+          "api": [
+            "GET /settings/github/accounts",
+            "POST /settings/github/accounts",
+            "PUT /settings/github/accounts/{id}",
+            "DELETE /settings/github/accounts/{id}"
+          ],
+          "support": {
+            "windows": "full",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {},
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
+        },
+        {
+          "id": "github-account-health",
+          "title": "Project GitHub account and health",
+          "description": "See which GitHub account serves a project, name it in GitHub refusals, and check its token, scopes, repository access and rate limits.",
+          "api": [
+            "GET /github/account",
+            "GET /settings/github/health"
+          ],
+          "support": {
+            "windows": "full",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {},
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
+        },
+        {
+          "id": "personal-connections",
+          "title": "Personal connections",
+          "description": "Connect or disconnect your own GitHub account and Home Assistant with write-only tokens.",
+          "api": [
+            "GET /me/github",
+            "PUT /me/github",
+            "DELETE /me/github",
+            "GET /me/home-assistant",
+            "PUT /me/home-assistant",
+            "DELETE /me/home-assistant"
+          ],
+          "support": {
+            "windows": "none",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {}
+        },
+        {
+          "id": "settings-sharing",
+          "title": "Sharing",
+          "description": "Grant members access to a project or registered service by saving its membership (Admin).",
+          "api": [
+            "GET /users",
+            "GET /settings/shares",
+            "PUT /settings/shares"
+          ],
+          "support": {
+            "windows": "none",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {}
         }
       ]
     },
@@ -1559,7 +1822,7 @@
         {
           "id": "system-notifications",
           "title": "Background notifications",
-          "description": "Get OS notifications when an agent asks, a turn finishes, findings are held or a session fails.",
+          "description": "Get OS notifications when an agent asks, a turn finishes or a session fails.",
           "api": [
             "GET /events"
           ],
@@ -1567,10 +1830,12 @@
             "windows": "none",
             "mac": "none",
             "ios": "none",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
             "ios": "No push in the API (would need APNs); iOS can't hold /events open in the background.",
+            "android": "Opt-in (Settings > Background notifications); a foreground service keeps /events open.",
             "quest": "Foreground service keeps /events open."
           }
         },
@@ -1585,6 +1850,7 @@
             "windows": "none",
             "mac": "none",
             "ios": "none",
+            "android": "full",
             "quest": "full"
           },
           "notes": {}
@@ -1598,20 +1864,41 @@
             "GET /events"
           ],
           "support": {
-            "windows": "partial",
+            "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
-            "windows": "Only a findings count in the sidebar.",
+            "windows": "◉ Status shows Need you/Working/Ready counts and answers questions inline; refreshed by polling GET /sessions, not /events.",
             "mac": "◉ Status in the sidebar strip, its badge the count needing you; answers questions in place.",
-            "ios": "◉ Status at the top of the Findings tab, whose badge is the count needing you; answers questions in place.",
+            "ios": "Its own Status tab, badged with the count needing you; answers questions in place.",
+            "android": "A Status tab (counts, answering in place, refresh), and a narrow status panel opened from the background notification.",
             "quest": "Dedicated status panel."
           },
-          "wireframes": [
-            "findings"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
+        },
+        {
+          "id": "pull-attention",
+          "title": "Pull requests waiting on you",
+          "description": "Status lists pull requests waiting on you (approvals not yet given, review rounds used up, outcomes GitHub would not take) and approves them in place.",
+          "api": [
+            "GET /attention",
+            "POST /pulls/{number}/approvals"
+          ],
+          "support": {
+            "windows": "full",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {
+            "mac": "For an Admin token.",
+            "ios": "For an Admin token."
+          },
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
     },
@@ -1634,11 +1921,13 @@
           "support": {
             "windows": "none",
             "mac": "none",
-            "ios": "full",
+            "ios": "none",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
-            "ios": "Scoped to one project; works with the phone locked.",
+            "ios": "Removed (realtime voice assistant dropped).",
+            "android": "Across all projects and drives the app's screens; needs the user's own OpenAI key.",
             "quest": "Across all projects, and also drives the panels ('show me this PR')."
           }
         },
@@ -1648,44 +1937,20 @@
           "description": "Talk to one conversation's agent by voice and hear its replies and questions read aloud.",
           "api": [
             "GET /sessions/{id}",
-            "POST /sessions/{id}/messages",
-            "POST /sessions/{id}/findings/triage"
+            "POST /sessions/{id}/messages"
           ],
           "support": {
             "windows": "none",
             "mac": "none",
-            "ios": "full",
+            "ios": "none",
+            "android": "partial",
             "quest": "partial"
           },
           "notes": {
+            "ios": "Removed (hands-free conversation line dropped).",
+            "android": "The global assistant can answer an agent, but there is no dedicated per-conversation read-aloud line.",
             "quest": "The global assistant can answer an agent, but there is no dedicated per-conversation read-aloud line."
           }
-        },
-        {
-          "id": "meeting-assistant",
-          "title": "Meeting assistant",
-          "description": "An ElevenLabs agent joins your meeting through a virtual mic and answers project questions with read-only tools.",
-          "api": [
-            "GET /sessions",
-            "GET /pulls",
-            "GET /pulls/{number}/findings",
-            "GET /issues/{number}"
-          ],
-          "support": {
-            "windows": "full",
-            "mac": "full",
-            "ios": "n/a",
-            "quest": "n/a"
-          },
-          "notes": {
-            "ios": "iOS can't capture other apps' audio or provide a virtual microphone.",
-            "quest": "Android can't capture meeting apps' audio or inject a virtual mic."
-          },
-          "wireframes": [
-            "meeting",
-            "project-pulls",
-            "settings"
-          ]
         },
         {
           "id": "carplay",
@@ -1701,12 +1966,15 @@
             "windows": "n/a",
             "mac": "n/a",
             "ios": "full",
+            "android": "n/a",
             "quest": "n/a"
           },
           "notes": {
             "windows": "No CarPlay on Windows.",
             "mac": "No CarPlay on macOS.",
-            "quest": "No CarPlay on Quest."
+            "ios": "iOS 26.4 or later; dictation only, the app never speaks.",
+            "android": "CarPlay is Apple-only; Android Auto would be a feature of its own.",
+            "quest": "No CarPlay or car integration on Quest."
           }
         }
       ]
@@ -1730,12 +1998,13 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
             "windows": "Docks beside the conversation, resizes, expands or pops out to its own window.",
             "mac": "Docks/pops out like Windows; also uses GET /sessions/{id}/browser/screenshot.",
-            "ios": "Full screen only (no docking).",
+            "ios": "Full screen (no docking); on iPad also in a window of its own.",
             "quest": "Not built."
           },
           "wireframes": [
@@ -1760,10 +2029,14 @@
             "windows": "full",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
+            "windows": "Per project tab and a global SSH servers page across projects.",
+            "mac": "Local ssh accepts new host keys and refuses changed ones.",
             "ios": "Excluded (needs the Mac's ssh); possible with an embedded SSH library.",
+            "android": "Not built; Android could embed an SSH client.",
             "quest": "Not built; Android could embed an SSH client."
           },
           "wireframes": [
@@ -1781,10 +2054,12 @@
             "windows": "full",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
             "ios": "Not built (needs local sftp).",
+            "android": "Not built.",
             "quest": "Not built."
           },
           "wireframes": [
@@ -1802,6 +2077,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {},
@@ -1827,13 +2103,14 @@
             "POST /mail/accounts/{account}/messages/{id}/reply"
           ],
           "support": {
-            "windows": "partial",
+            "windows": "full",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
-            "windows": "Reply at provider opens the provider's website; it does not call the reply route (core #152)."
+            "windows": "Replies in the thread through the reply route."
           },
           "wireframes": [
             "mail"
@@ -1852,6 +2129,7 @@
             "windows": "partial",
             "mac": "partial",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
@@ -1875,6 +2153,7 @@
             "windows": "none",
             "mac": "none",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {}
@@ -1894,10 +2173,12 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
-            "ios": "iPad only; iPhone is single-column."
+            "ios": "iPad only; iPhone is single-column.",
+            "android": "268dp sidebar beside the detail at 1024dp and wider; one pane with Back below."
           },
           "wireframes": [
             "conversation"
@@ -1906,17 +2187,19 @@
         {
           "id": "detached-windows",
           "title": "Detached windows / panels",
-          "description": "Pop a conversation, findings, dashboard or browser into its own window/panel.",
+          "description": "Pop a conversation, the Findings screen, dashboard or browser into its own window/panel.",
           "api": [],
           "support": {
             "windows": "full",
             "mac": "full",
             "ios": "full",
+            "android": "partial",
             "quest": "full"
           },
           "notes": {
             "ios": "iPad only (Open in New Window); an iPhone has one window.",
-            "quest": "Conversations, preview and status as separate panels."
+            "android": "Preview, voice and status open as their own resizable activities; a conversation's pop-out button and notifications open it in the main window, not its own.",
+            "quest": "Conversations, preview, status and voice as separate panels."
           },
           "wireframes": [
             "conversation",
@@ -1926,6 +2209,60 @@
             "pull-request",
             "whatsapp"
           ]
+        },
+        {
+          "id": "system-theme",
+          "title": "Light and dark themes",
+          "description": "Follow the system's light or dark appearance with the shared palettes.",
+          "api": [],
+          "support": {
+            "windows": "full",
+            "mac": "full",
+            "ios": "full",
+            "android": "full",
+            "quest": "none"
+          },
+          "notes": {
+            "quest": "Dark only until Quest adopts the generated tokens and their light palette."
+          },
+          "undrawn": "Colours come from the tokens; the wireframes are drawn in greys."
+        },
+        {
+          "id": "sleep-mode",
+          "title": "Sleep mode",
+          "description": "After a chosen idle time, a wall replays working sessions' files and commands live until any input wakes the app.",
+          "api": [
+            "GET /events",
+            "GET /sessions/{id}",
+            "GET /repo/file"
+          ],
+          "support": {
+            "windows": "full",
+            "mac": "full",
+            "ios": "full",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {},
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
+        },
+        {
+          "id": "media-player",
+          "title": "Now playing",
+          "description": "The sidebar foot shows what Spotify or another media app is playing, with previous, play/pause, next and volume.",
+          "api": [],
+          "support": {
+            "windows": "full",
+            "mac": "full",
+            "ios": "none",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {
+            "windows": "Through Windows media sessions.",
+            "mac": "Through Apple Events and Core Audio."
+          },
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
     },
@@ -1944,11 +2281,12 @@
             "windows": "none",
             "mac": "none",
             "ios": "full",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
             "windows": "README claims search, but no list filter exists in code (Ctrl+F only works inside a conversation).",
-            "mac": "No sidebar search field found."
+            "mac": "No sidebar search field."
           }
         },
         {
@@ -1959,10 +2297,13 @@
           "support": {
             "windows": "full",
             "mac": "full",
-            "ios": "none",
+            "ios": "full",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {},
+          "notes": {
+            "ios": "Find in Conversation from the conversation's menu."
+          },
           "wireframes": [
             "conversation"
           ]
@@ -1981,6 +2322,7 @@
             "windows": "full",
             "mac": "full",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
@@ -1994,22 +2336,27 @@
     },
     {
       "id": "home-assistant",
-      "title": "Home Assistant (proposed client screens)",
+      "title": "Home Assistant",
       "features": [
         {
           "id": "home-assistant-connection",
           "title": "Home Assistant connection",
-          "description": "Check the server-configured bridge with an admin token; proposed UI, no client implementation.",
+          "description": "Check your Home Assistant connection: your own, connected with PUT /me/home-assistant, or the server's for the original operator.",
           "api": [
             "GET /home-assistant"
           ],
           "support": {
-            "windows": "none",
+            "windows": "partial",
             "mac": "none",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {},
+          "notes": {
+            "windows": "Settings → Smart home shows the connection state, for Admin tokens only; no form to connect your own Home Assistant (PUT /me/home-assistant), and its not-configured message names only the server variables, which serve the original operator.",
+            "mac": "Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections.",
+            "ios": "Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections."
+          },
           "wireframes": [
             "home-assistant-connection"
           ]
@@ -2017,18 +2364,21 @@
         {
           "id": "home-assistant-entities",
           "title": "Home Assistant entities",
-          "description": "Browse and filter entities, inspect their states and attributes, and poll while visible; proposed UI.",
+          "description": "Browse and filter entities, inspect their states and attributes, and poll while visible.",
           "api": [
             "GET /home-assistant/entities",
             "GET /home-assistant/entities/{id}"
           ],
           "support": {
-            "windows": "none",
+            "windows": "full",
             "mac": "none",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {},
+          "notes": {
+            "windows": "Polls entity states every ten seconds while visible. Admin tokens only, although the server allows read (and manage for actions and events)."
+          },
           "wireframes": [
             "home-assistant"
           ]
@@ -2036,18 +2386,21 @@
         {
           "id": "home-assistant-actions",
           "title": "Home Assistant actions",
-          "description": "Discover services, send service data, and inspect receipts without automatic retries; proposed UI.",
+          "description": "Discover services, send service data, and inspect receipts without automatic retries.",
           "api": [
             "GET /home-assistant/services",
             "POST /home-assistant/services/{domain}/{service}"
           ],
           "support": {
-            "windows": "none",
+            "windows": "full",
             "mac": "none",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {},
+          "notes": {
+            "windows": "Admin tokens only, although the server allows read (and manage for actions and events)."
+          },
           "wireframes": [
             "home-assistant-action",
             "home-assistant"
@@ -2056,17 +2409,20 @@
         {
           "id": "home-assistant-events",
           "title": "Home Assistant events",
-          "description": "Send an event to an existing Home Assistant automation; proposed UI, no event subscription.",
+          "description": "Send an event to an existing Home Assistant automation; no event subscription.",
           "api": [
             "POST /home-assistant/events/{type}"
           ],
           "support": {
-            "windows": "none",
+            "windows": "full",
             "mac": "none",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
-          "notes": {},
+          "notes": {
+            "windows": "Admin tokens only, although the server allows read (and manage for actions and events)."
+          },
           "wireframes": [
             "home-assistant-event"
           ]
@@ -2086,13 +2442,15 @@
             "windows": "none",
             "mac": "none",
             "ios": "none",
+            "android": "none",
             "quest": "none"
           },
           "notes": {
             "windows": "Proposed This computer block with available CPU, memory, and battery readings.",
             "mac": "Same proposed desktop layout as Windows.",
             "ios": "Proposed This device block, battery first; omit metrics the OS cannot supply.",
-            "quest": "Proposed This device block with headset.type sizing; omit unsupported metrics."
+            "quest": "Proposed This device block with headset.type sizing; omit unsupported metrics.",
+            "android": "Proposed This device block like iPhone, battery first; omit metrics the OS cannot supply."
           },
           "wireframes": [
             "menu-status",
@@ -2104,7 +2462,75 @@
   ],
   "unused_api": [
     {
-      "group": "slack (inbox)",
+      "group": "pulls",
+      "routes": [
+        "GET /pulls/{number}/commits",
+        "GET /pulls/{number}/checks",
+        "GET /pulls/{number}/code-review-decisions",
+        "PATCH /pulls/{number}/code-review-decisions/{decisionId}",
+        "GET /pulls/{number}/approvals"
+      ]
+    },
+    {
+      "group": "reviewBenchmarks",
+      "routes": [
+        "GET /review-benchmarks/cases",
+        "POST /review-benchmarks/cases",
+        "PUT /review-benchmarks/cases/{caseId}",
+        "POST /review-benchmarks/cases/{caseId}/retire",
+        "POST /review-benchmarks/cases/{caseId}/adjudications",
+        "GET /review-benchmarks/runs",
+        "POST /review-benchmarks/runs",
+        "GET /review-benchmarks/runs/{runId}",
+        "POST /review-benchmarks/runs/{runId}/cancel",
+        "PUT /review-benchmarks/runs/{runId}/results/{resultId}/judgments/{findingId}",
+        "DELETE /review-benchmarks/runs/{runId}/results/{resultId}/judgments/{findingId}",
+        "GET /review-benchmarks/compare"
+      ]
+    },
+    {
+      "group": "reviewQuality",
+      "routes": [
+        "GET /review-quality"
+      ]
+    },
+    {
+      "group": "session-files",
+      "routes": [
+        "POST /sessions/{id}/files"
+      ]
+    },
+    {
+      "group": "sessions",
+      "routes": [
+        "POST /sessions/{id}/btw",
+        "POST /sessions/{id}/qa-loop",
+        "POST /sessions/{id}/link-pr",
+        "GET /sessions/{id}/preview",
+        "GET /sessions/{id}/alarms",
+        "POST /sessions/{id}/alarms",
+        "DELETE /sessions/{id}/alarms/{alarmId}"
+      ],
+      "note": "Side questions, QA loop, linking a pull request, the preview record and session alarms."
+    },
+    {
+      "group": "whatsapp",
+      "routes": [
+        "GET /whatsapp/accounts",
+        "GET /whatsapp/accounts/{id}",
+        "POST /whatsapp/accounts/{id}/start",
+        "GET /whatsapp/accounts/{id}/qr",
+        "POST /whatsapp/accounts/{id}/logout",
+        "GET /whatsapp/accounts/{id}/conversations",
+        "GET /whatsapp/accounts/{id}/conversations/{chat}/messages",
+        "POST /whatsapp/accounts/{id}/conversations/{chat}/messages",
+        "POST /whatsapp/accounts/{id}/conversations/{chat}/read",
+        "GET /whatsapp/accounts/{id}/conversations/{chat}/messages/{message}/media"
+      ],
+      "note": "The WhatsApp screens on Windows and the Mac embed web.whatsapp.com instead."
+    },
+    {
+      "group": "slack",
       "routes": [
         "GET /slack/workspaces",
         "GET /slack/workspaces/{id}/conversations",
@@ -2113,6 +2539,7 @@
         "POST /slack/workspaces/{id}/direct-messages",
         "GET /slack/workspaces/{id}/conversations/{channel}/messages",
         "GET /slack/workspaces/{id}/conversations/{channel}/threads/{ts}",
+        "GET /slack/workspaces/{id}/files/{file}",
         "POST /slack/workspaces/{id}/conversations/{channel}/messages",
         "POST /slack/workspaces/{id}/conversations/{channel}/read",
         "GET /slack/workspaces/{id}/events",
@@ -2120,73 +2547,73 @@
       ]
     },
     {
-      "group": "whatsapp",
+      "group": "deployments",
       "routes": [
-        "all 10 /whatsapp/accounts/* routes"
+        "GET /deployments/config"
       ]
     },
     {
-      "group": "sessions.btw",
-      "routes": [
-        "POST /sessions/{id}/btw"
-      ]
-    },
-    {
-      "group": "sessions.qaLoop",
-      "routes": [
-        "POST /sessions/{id}/qa-loop"
-      ]
-    },
-    {
-      "group": "sessions.linkPr",
-      "routes": [
-        "POST /sessions/{id}/link-pr"
-      ]
-    },
-    {
-      "group": "pulls.checks / pulls.commits",
-      "routes": [
-        "GET /pulls/{number}/checks",
-        "GET /pulls/{number}/commits"
-      ]
-    },
-    {
-      "group": "ssh.requests",
-      "routes": [
-        "GET /ssh/requests"
-      ]
-    },
-    {
-      "group": "envoyer (single items)",
+      "group": "envoyer",
       "routes": [
         "GET /envoyer/accounts/{id}/projects/{project}",
         "GET /envoyer/accounts/{id}/projects/{project}/deployments/{deployment}"
       ]
     },
     {
-      "group": "deployments.config (read)",
+      "group": "settings.projects.backup",
       "routes": [
-        "GET /deployments/config"
+        "GET /settings/projects/{id}/backup",
+        "POST /settings/projects/{id}/backup"
       ]
     },
     {
-      "group": "home-assistant",
+      "group": "settings",
       "routes": [
-        "GET /home-assistant",
-        "GET /home-assistant/entities",
-        "GET /home-assistant/entities/{id}",
-        "GET /home-assistant/services",
-        "POST /home-assistant/services/{domain}/{service}",
-        "POST /home-assistant/events/{type}"
-      ],
-      "note": "Admin-only bridge merged in Core #147; proposed client wireframes, support checked on 2026-10-12."
+        "GET /settings/ci-rates",
+        "PUT /settings/ci-rates"
+      ]
+    }
+  ],
+  "retired": [
+    {
+      "id": "review-loop",
+      "title": "Review loop toggle",
+      "reason": "The server no longer has a per-session review loop toggle; core #228 removed it with the old code review system."
     },
     {
-      "group": "sessions.files",
-      "routes": [
-        "POST /sessions/{id}/files"
-      ],
-      "note": "Publish a downloadable session file (core #149); assistant links to workspace files already arrive as download URLs."
+      "id": "pr-babysitter",
+      "title": "Pull request babysitter",
+      "reason": "Core #297 removed the pull request babysitter and its project setting."
+    },
+    {
+      "id": "findings-queue",
+      "title": "Findings queue",
+      "reason": "Core #228 removed findings triage with the old code review system; stored code reviews replace it (see Code reviews & approvals)."
+    },
+    {
+      "id": "triage-round",
+      "title": "Triage a held round",
+      "reason": "Core #228 removed held review rounds and their triage routes."
+    },
+    {
+      "id": "foreign-review-actions",
+      "title": "Reply/delete on others' reviews",
+      "reason": "Core #228 removed the findings reply and delete routes."
+    },
+    {
+      "id": "pr-finding-decisions",
+      "title": "Decide findings on a PR page",
+      "reason": "Core #228 removed `POST /pulls/{number}/findings/decision`; a verdict is now overruled on a stored code review."
+    },
+    {
+      "id": "settings-db-pool",
+      "title": "Database pool",
+      "reason": "Core #274 removed the session database server pool and `/settings/db-servers`."
+    },
+    {
+      "id": "meeting-assistant",
+      "title": "Meeting assistant",
+      "reason": "Removed from Windows and the Mac in November 2026; no client offers it."
     }
   ]
 }

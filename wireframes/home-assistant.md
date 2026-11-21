@@ -1,6 +1,6 @@
 # Home Assistant wireframes
 
-These are proposed client screens for the merged [Core bridge, PR #147](https://github.com/nadinyamaui/briareus/pull/147). They do not describe a shipped client UI. The bridge works independently of projects and agent sessions.
+These screens were drawn as proposals for the merged [Core bridge, PR #147](https://github.com/nadinyamaui/briareus/pull/147). Windows has since shipped a simpler version, reached from **Settings → Smart home**; for the other clients these drawings are still proposals. The bridge works independently of projects and agent sessions.
 
 | Screen | Preview | Editable scene |
 | --- | --- | --- |
@@ -11,15 +11,15 @@ These are proposed client screens for the merged [Core bridge, PR #147](https://
 
 ## Navigation
 
-A proposed **Home Assistant** row below the projects opens the entities screen. It is global, so a project does not need to be selected. Show the entry only when the API catalog exposes the bridge and the Briareus token has admin access. Read and manage tokens cannot use any bridge route.
+Windows opens the screens from **Settings → Smart home**. The drawings show the original proposal, a **Home Assistant** row below the projects that opens the entities screen. It is global, so a project does not need to be selected. Show the entry only when the API catalog has the Home Assistant routes and the token may call them: reading needs `read`, calling services and firing events needs `manage` (see API behavior). Windows currently shows it only to Admin tokens, which is stricter than the server requires.
 
-On entry, check the connection. An unconfigured bridge opens the connection screen with setup guidance. A connected bridge opens entities. The wide header provides Entities, Actions, Events, and Connection destinations. Below 1024px, use a destination selector with those same labels under the Home Assistant title, followed by one pane at a time. The narrow drawings show the selected destination. Selecting an entity opens its detail pane; Back returns to the list with its domain filter intact.
+On entry, check the connection. In the original proposal an unconfigured bridge opens the connection screen with setup guidance, a connected bridge opens entities, and the wide header provides Entities, Actions, Events, and Connection destinations. Windows instead shows only the setup or disconnected message until the bridge connects, and then a "Connected" status line above three tabs: Entities, Actions and Events. Below 1024px, a client uses a selector with those same three tabs under the Home Assistant title, followed by one pane at a time. In the proposal, selecting an entity opens its detail pane and Back returns to the list with its domain filter intact; Windows shows the picked entity's JSON above the list.
 
-Windows supplies the existing 268px sidebar, navigation labels, and narrow Back behavior. The new row, destinations, and Home Assistant content are proposals. Windows and Mac use the wide composition. iPhone and narrow iPad use one pane. Quest uses the same ordering with `headset.type` sizes and scrolling. The drawings use greys and identify the shared layout and theme tokens. The sidebar also includes the proposed [local device status block](menu-status.md), which is independent of Home Assistant.
+Windows supplies the existing 268px sidebar, navigation labels, and narrow Back behavior. A client porting the screens should follow Windows: the Settings → Smart home entry and the Entities/Actions/Events tabs, with the connection shown as a message or status line; the Connection destination and the detail pane remain the original proposal. Windows and Mac use the wide composition. iPhone and narrow iPad use one pane. Quest uses the same ordering with `headset.type` sizes and scrolling. The drawings use greys and identify the shared layout and theme tokens. The sidebar also includes the proposed [local device status block](menu-status.md), which is independent of Home Assistant.
 
 ## API behavior
 
-All paths below are relative to `/api/v1` and require admin access.
+All paths below are relative to `/api/v1`. They reach the caller's own Home Assistant: `GET` routes need `read`, and service calls and events need `manage`.
 
 | Screen | Requests | User-visible result |
 | --- | --- | --- |
@@ -34,19 +34,19 @@ Action and event bodies are JSON objects sent directly, without a wrapper. The w
 
 Poll entities only while the screen is visible and show when the last read succeeded. There is no subscription endpoint. On read failure, label retained values as stale and offer Retry. Show loading, empty-domain, unknown, unavailable, and missing-entity states without inventing a device status. Missing timestamps display as unknown.
 
-Disable submission while an action or event is pending. A timeout or invalid receipt can mean the operation ran. Never retry a POST automatically. Offer **Read entity state** for a targeted action before the user decides whether to retry. For events or actions without an entity target, direct the user to check Home Assistant. A 400 retains the inputs with the error, a 404 reports the missing item, and a 429 reports rate limiting. A 403 removes access. An upstream credentials error is 502 and must not sign the user out of Briareus.
+Disable submission while an action or event is pending. A timeout or invalid receipt can mean the operation ran. Never retry a POST automatically. Offer **Read entity state** for a targeted action before the user decides whether to retry. For events or actions without an entity target, direct the user to check Home Assistant. A 400 retains the inputs with the error, a 404 reports the missing item, and a 429 reports rate limiting. A 403 on a `GET` removes access; a 403 on a service call or event means the token lacks `manage`, so disable actions and events for it and keep the reads. An upstream credentials error is 502 and must not sign the user out of Briareus.
 
-Connection credentials are configured on the server with `HOME_ASSISTANT_URL` and `HOME_ASSISTANT_TOKEN`, followed by a server restart. The client has no credential editor. Physical device setup, pairing, area management, and automation configuration stay in Home Assistant. The bridge exposes entities, not the device or area registries.
+Each user connects their own Home Assistant with `PUT /me/home-assistant` (URL and a write-only token) and disconnects it with `DELETE /me/home-assistant`; the Mac and iPhone offer this under Personal connections. The original operator, the first user, also has the one `HOME_ASSISTANT_URL` and `HOME_ASSISTANT_TOKEN` set on the server. Windows has no form for the personal connection yet. Physical device setup, pairing, area management, and automation configuration stay in Home Assistant. The bridge exposes entities, not the device or area registries.
 
 ## Source revisions
 
-Checked on 2026-10-12:
+The original proposal was drawn from these revisions, checked on 2026-10-12:
 
 - [Core 44d930b](https://github.com/nadinyamaui/briareus/tree/44d930b09fc177759f76924f181e1483887cfe14): `docs/home-assistant.md`, `docs/api-v1-reference.md`, `lib/home-assistant.js`, and `lib/home-assistant-routes.js` define the bridge behavior.
 - [Windows bf6359f](https://github.com/okanetsolutions/briareus-windows/tree/bf6359f9213979b52deef9f6d76f647109b359de): `app/main.c` and `app/screen_projects.c` define the reference shell; no Home Assistant client implementation was found.
 - [Swift abb71be](https://github.com/okanetsolutions/briareus-swift/tree/abb71bec5825319c769218601c8361d85b5bc81a) and [Quest c71fb2e](https://github.com/okanetsolutions/briareus-quest/tree/c71fb2e94a253075496f2a9db4b7ca8d1ad34161): no Home Assistant client implementation was found.
 
-The feature matrix records `none` for all four clients. Its wireframe links describe this proposal, not implemented support. The rest of the feature matrix retains its earlier audit date.
+The current text follows [Core c749e2a](https://github.com/nadinyamaui/briareus/tree/c749e2a) (`lib/api-v1-catalog.js`: per-user routes and `/me/home-assistant`) and [Windows 70d3404](https://github.com/okanetsolutions/briareus-windows/tree/70d3404) (`app/screen_home_assistant.c`), checked on 2026-11-21. The feature matrix marks Windows full for entities, actions and events and partial for the connection (no personal-connection form, and its not-configured message names only the server variables); all four are shown to Admin tokens only, and the other clients none.
 
 ## Editing
 

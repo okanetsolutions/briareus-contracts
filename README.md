@@ -2,13 +2,14 @@
 
 [![CI](https://github.com/okanetsolutions/briareus-contracts/actions/workflows/ci.yml/badge.svg)](https://github.com/okanetsolutions/briareus-contracts/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-The design tokens of the [Briareus](https://github.com/nadinyamaui/briareus) clients in one place: colours for dark and light, what colour each session status takes, text styles, corner radii, layout widths and the working indicator. [Style Dictionary](https://styledictionary.com/info/tokens/) builds them into each client's own idiom, so a change here reaches Windows, the Mac, iPhone and iPad, and Quest as one reviewed diff instead of four hand edits.
+The design tokens of the [Briareus](https://github.com/nadinyamaui/briareus) clients in one place: colours for dark and light, what colour each session status takes, text styles, corner radii, layout widths and the working indicator. [Style Dictionary](https://styledictionary.com/info/tokens/) builds them into each client's own idiom, so a change here reaches Windows, the Mac, iPhone and iPad, and Android as one reviewed diff instead of four hand edits. Quest still needs a hand edit in `ui/Theme.kt` until it adopts the generated file.
 
 | Client | Gets | Copied to |
 | --- | --- | --- |
 | [briareus-windows](https://github.com/okanetsolutions/briareus-windows) (C11, Win32) | `dist/c/briareus_tokens.h`, header-only | `app/briareus_tokens.h` |
 | [briareus-swift](https://github.com/okanetsolutions/briareus-swift) (SwiftUI, Mac and iOS) | `dist/swift/BriareusTokens.swift`, no UIKit/AppKit | `Mac/Core/BriareusTokens.swift` |
-| [briareus-quest](https://github.com/okanetsolutions/briareus-quest) (Kotlin, Compose) | `dist/kotlin/BriareusTokens.kt` | `app/src/main/kotlin/com/okanetsolutions/briareus/tokens/BriareusTokens.kt` |
+| [briareus-android](https://github.com/okanetsolutions/briareus-android) (Kotlin, Compose) | `dist/kotlin/BriareusTokens.kt` | `app/src/main/kotlin/com/okanetsolutions/briareus/tokens/BriareusTokens.kt` |
+| [briareus-quest](https://github.com/okanetsolutions/briareus-quest) (Kotlin, Compose) | `dist/kotlin/BriareusTokens.kt` | Not adopted yet: `ui/Theme.kt` keeps a hand copy of the dark palette and headset type, with the same values |
 | Anything on the web (docs, a status page) | `dist/css/briareus-tokens.css`, `dist/json/briareus-tokens.json` | |
 
 The server ([nadinyamaui/briareus](https://github.com/nadinyamaui/briareus)) has no UI of its own any more; what it owns here is the vocabulary of session statuses (`running`, `idle`, `waiting`, …) that [`tokens/semantic/status.json`](tokens/semantic/status.json) maps to colours. When the server adds a status, add it there.
@@ -37,7 +38,7 @@ Tokens are in the [DTCG format](https://www.designtokens.org/tr/drafts/format/) 
 
 ## Features
 
-[FEATURES.md](FEATURES.md) shows, for each of the 99 tracked features, including proposed All sessions, Home Assistant screens and menu status widgets, whether Windows, the Mac, iPhone/iPad and Quest have it in full, in part, not at all, or cannot (n/a). It also lists the server routes no client calls. It is generated from [features/features.json](features/features.json): when a client gains or loses a feature, update the JSON in the same change and run `npm run build`.
+[FEATURES.md](FEATURES.md) shows, for each of the 109 tracked features, including the proposed All sessions view and menu status widget, whether Windows, the Mac, iPhone/iPad, Android and Quest have it in full, in part, not at all, or cannot (n/a). It also lists the features the server or every client dropped (with any calls a client still carries for them), and the server routes no client calls. It is generated from [features/features.json](features/features.json): when a client gains or loses a feature, update the JSON in the same change and run `npm run build`.
 
 ## Changing a token
 
@@ -53,7 +54,7 @@ npm run check
 
 That builds `dist/`, checks contrast (ink on every surface ≥ 4.5:1, muted on canvas and sidebar ≥ 4.5:1, accent and status colours on canvas ≥ 3:1, chart colours ≥ 3:1 on the surfaces they sit on, both modes), and fails if the committed `dist/` differs from what the tokens build. Commit `tokens/` and `dist/` together.
 
-Each client then copies its file from `dist/` to the path in the table above.
+Each adopting client then copies its file from `dist/` to the path in the table above (`node scripts/sync.mjs` does it for checkouts beside this one).
 
 ## Using the tokens
 
@@ -76,14 +77,14 @@ static func statusColor(_ s: String?) -> Color { color(BriareusStatusRole(status
 static let body = Font.system(size: BriareusType.body.size, weight: weight(BriareusType.body.weight))  // 400 → .regular, 500 → .medium, 600 → .semibold
 ```
 
-**Quest.** Light or dark as the system says, with the headset type:
+**Android.** Light or dark as the system says. Quest keeps a hand copy of the dark palette and `headset.type` in `ui/Theme.kt` for now; once it adopts the file it uses the same code with `BriareusHeadsetType`:
 
 ```kotlin
 val dark = isSystemInDarkTheme()
 val p = if (dark) BriareusPalette.Dark else BriareusPalette.Light
 val scheme = if (dark) darkColorScheme(primary = p.accent, background = p.canvas, /* … */)
              else lightColorScheme(primary = p.accent, background = p.canvas, /* … */)
-val type = Typography(bodyLarge = BriareusHeadsetType.bodyLarge, /* … */)
+val type = Typography(bodyLarge = BriareusType.body, /* … */)  // Quest: BriareusHeadsetType.bodyLarge
 StatusDot(color = p.statusColor(session.status))
 ```
 
@@ -92,6 +93,8 @@ StatusDot(color = p.statusColor(session.status))
 - Every client draws with these colours, and only these: no client keeps a palette of its own.
 - Every client supports light and dark, following the system's setting.
 - A status takes the same colour everywhere.
+
+Quest is the one exception for now: it keeps a hand copy of the dark palette in `ui/Theme.kt` and is dark only, until it adopts the generated file.
 
 ## Where the clients stood
 
@@ -108,7 +111,7 @@ The tokens start from the palette Windows, the Mac app and Quest already share: 
 | `idle` | ok (green) | secondary grey |
 | `cancelled` | warn | danger |
 
-The iPhone app moves onto the shared palette, in line with the Mac app it shares a core with: running sessions turn clay instead of green, finished ones green instead of grey. Quest, which was dark only, gains the light theme.
+The iPhone app moves onto the shared palette, in line with the Mac app it shares a core with: running sessions turn clay instead of green, finished ones green instead of grey. Quest, which is dark only, gains the light theme when it adopts the tokens.
 
 Charts: the usage dashboard's series colours were already shared by Windows, the Mac and iPhone, and read in both modes. The context bar's colours were tuned for dark only, at about 2.5:1 on a light surface; `chart.context.light` keeps their hues at 3:1. Each client looks a category up with `contextColor`/`briareus_context_color`, so the names Claude's /context report uses live here too.
 

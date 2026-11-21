@@ -29,14 +29,27 @@ test('a partial or n/a mark says why', () => {
   }
 });
 
-test('every feature Windows offers names its screens, and each has a scene and a preview', () => {
+test('every feature Windows offers names its screens or says why it is not drawn, and each screen has a scene and a preview', () => {
   for (const f of data.areas.flatMap((a) => a.features)) {
-    // Windows is the reference the wireframes are drawn from, so whatever it offers is on a screen.
-    if (['full', 'partial'].includes(f.support.windows)) assert.ok(f.wireframes?.length, `${f.id}: no wireframes`);
+    // Windows is the reference the wireframes are drawn from: whatever it offers is on a screen, or says why not.
+    if (['full', 'partial'].includes(f.support.windows)) assert.ok(f.wireframes?.length || f.undrawn, `${f.id}: no wireframes and no undrawn reason`);
+    if (f.undrawn) assert.ok(!f.wireframes?.length, `${f.id}: undrawn but lists wireframes`);
     for (const w of f.wireframes ?? []) {
       for (const ext of ['excalidraw', 'svg']) {
         assert.ok(existsSync(new URL(`../wireframes/${w}.${ext}`, import.meta.url)), `${f.id}: no wireframes/${w}.${ext}`);
       }
     }
+  }
+});
+
+test('a retired feature is gone from the matrix and names only known clients', () => {
+  const live = new Set(data.areas.flatMap((a) => a.features.map((f) => f.id)));
+  const retired = (data.retired ?? []).map((f) => f.id);
+  assert.equal(new Set(retired).size, retired.length, 'retired ids are unique');
+  for (const f of data.retired ?? []) {
+    assert.ok(!live.has(f.id), `${f.id} is both retired and live`);
+    assert.ok(f.title, `${f.id}: retired without a title`);
+    assert.ok(f.reason, `${f.id}: retired without a reason`);
+    for (const client of Object.keys(f.leftovers ?? {})) assert.ok(data.clients.includes(client), `${f.id}: leftover for unknown ${client}`);
   }
 });
