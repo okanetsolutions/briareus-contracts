@@ -38,7 +38,7 @@ Tokens are in the [DTCG format](https://www.designtokens.org/tr/drafts/format/) 
 
 ## Features
 
-[FEATURES.md](FEATURES.md) shows, for each of the 109 tracked features, including proposed All sessions, Home Assistant screens and menu status widgets, whether Windows, the Mac, iPhone/iPad, Android and Quest have it in full, in part, not at all, or cannot (n/a). It also lists the features the server or every client dropped, with the calls clients still carry for them, and the server routes no client calls. It is generated from [features/features.json](features/features.json): when a client gains or loses a feature, update the JSON in the same change and run `npm run build`.
+[FEATURES.md](FEATURES.md) shows, for each of the 109 tracked features, including proposed All sessions, Home Assistant screens and menu status widgets, whether Windows, the Mac, iPhone/iPad, Android and Quest have it in full, in part, not at all, or cannot (n/a). It also lists the features the server or every client dropped (with any calls a client still carries for them), and the server routes no client calls. It is generated from [features/features.json](features/features.json): when a client gains or loses a feature, update the JSON in the same change and run `npm run build`.
 
 ## Changing a token
 

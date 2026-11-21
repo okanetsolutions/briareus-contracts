@@ -10,7 +10,7 @@ One wireframe per screen, not one per platform, for every screen of the Windows 
 | Conversation | [`conversation.excalidraw`](conversation.excalidraw) · [preview](conversation.svg) | Self-update, Projects and conversations, Bulk close/delete, Start a conversation, Worktree / Local / Orchestrator, Incremental transcript, Markdown replies, Collapsible tool activity, Session details panel, Send follow-ups, Attach files, Voice notes, Take back queued messages, Answer agent questions, Stop a turn, Close, reopen, delete, Rename, Compact and clear, Review loop toggle, List beside conversation, Detached windows / panels, Find in conversation |
 | Shared browser | [`browser.excalidraw`](browser.excalidraw) · [preview](browser.svg) | Watch and drive the shared browser, Detached windows / panels |
 | ⚡ Webhook | [`webhook.excalidraw`](webhook.excalidraw) · [preview](webhook.svg) | Session webhook |
-| Project · Pull requests | [`project-pulls.excalidraw`](project-pulls.excalidraw) · [preview](project-pulls.svg) | Adapt to server and token, Saved state and incremental resume, Live session updates, Pull request list, Run preview, Errands, Merge, Meeting assistant |
+| Project · Pull requests | [`project-pulls.excalidraw`](project-pulls.excalidraw) · [preview](project-pulls.svg) | Adapt to server and token, Saved state and incremental resume, Live session updates, Pull request list, Run preview, Errands, Merge |
 | Project · Issues | [`project-issues.excalidraw`](project-issues.excalidraw) · [preview](project-issues.svg) | Issue list |
 | Project · Board | [`project-board.excalidraw`](project-board.excalidraw) · [preview](project-board.svg) | Issue page, GitHub Projects board |
 | Project · Review List | [`project-review-list.excalidraw`](project-review-list.excalidraw) · [preview](project-review-list.svg) | Errands, Merge, Review List |
@@ -20,17 +20,17 @@ One wireframe per screen, not one per platform, for every screen of the Windows 
 | Project · SFTP sessions | [`project-sftp.excalidraw`](project-sftp.excalidraw) · [preview](project-sftp.svg) | SFTP file browser |
 | Project · Database | [`project-db.excalidraw`](project-db.excalidraw) · [preview](project-db.svg) | Database browser |
 | Project · Forge | [`project-deploy.excalidraw`](project-deploy.excalidraw) · [preview](project-deploy.svg) | Laravel Forge sites |
-| Pull request | [`pull-request.excalidraw`](pull-request.excalidraw) · [preview](pull-request.svg) | PR overview, Files changed and diffs, PR comments and review threads, Run preview, Errands, Merge, Edit PR/issue and update branch, Decide findings on a PR page, Detached windows / panels |
+| Pull request | [`pull-request.excalidraw`](pull-request.excalidraw) · [preview](pull-request.svg) | PR overview, Files changed and diffs, PR comments and review threads, Run preview, Errands, Merge, Edit PR/issue and update branch, Detached windows / panels |
 | Issue | [`issue.excalidraw`](issue.excalidraw) · [preview](issue.svg) | Edit PR/issue and update branch, Issue page, Start a session on an issue, Close an issue |
-| Findings | [`findings.excalidraw`](findings.excalidraw) · [preview](findings.svg) | Findings queue, Triage a held round, Reply/delete on others' reviews, Waiting/working overview, Detached windows / panels |
+| Findings | [`findings.excalidraw`](findings.excalidraw) · [preview](findings.svg) | SSH and Slack approvals, Security overview, Pull requests waiting on you, Waiting/working overview, Detached windows / panels; its findings queue and triage are retired (core #228) |
 | Dashboard | [`dashboard.excalidraw`](dashboard.excalidraw) · [preview](dashboard.svg) | Spend dashboard, Detached windows / panels |
 | Mail | [`mail.excalidraw`](mail.excalidraw) · [preview](mail.svg) | Mail inbox |
 | WhatsApp | [`whatsapp.excalidraw`](whatsapp.excalidraw) · [preview](whatsapp.svg) | WhatsApp, Detached windows / panels |
-| Meeting assistant | [`meeting.excalidraw`](meeting.excalidraw) · [preview](meeting.svg) | Meeting assistant |
+| Meeting assistant (retired) | [`meeting.excalidraw`](meeting.excalidraw) · [preview](meeting.svg) | None: the meeting assistant was removed from every client; kept for reference |
 | Settings · Projects | [`settings-projects.excalidraw`](settings-projects.excalidraw) · [preview](settings-projects.svg) | Adapt to server and token, Projects settings |
 | Settings · Providers | [`settings-providers.excalidraw`](settings-providers.excalidraw) · [preview](settings-providers.svg) | Provider quotas, Providers settings |
 | Settings · Database pool, SSH servers, Forge accounts | [`settings-servers.excalidraw`](settings-servers.excalidraw) · [preview](settings-servers.svg) | Database pool, SSH servers, Forge accounts |
-| Settings · This computer, Mail, MCP servers | [`settings.excalidraw`](settings.excalidraw) · [preview](settings.svg) | Mail accounts, MCP servers, Meeting assistant |
+| Settings · This computer, Mail, MCP servers | [`settings.excalidraw`](settings.excalidraw) · [preview](settings.svg) | Mail accounts, MCP servers |
 
 ## All sessions proposal
 

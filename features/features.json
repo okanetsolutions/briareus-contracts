@@ -2464,7 +2464,8 @@
             "windows": "Proposed This computer block with available CPU, memory, and battery readings.",
             "mac": "Same proposed desktop layout as Windows.",
             "ios": "Proposed This device block, battery first; omit metrics the OS cannot supply.",
-            "quest": "Proposed This device block with headset.type sizing; omit unsupported metrics."
+            "quest": "Proposed This device block with headset.type sizing; omit unsupported metrics.",
+            "android": "Proposed This device block like iPhone, battery first; omit metrics the OS cannot supply."
           },
           "wireframes": [
             "menu-status",

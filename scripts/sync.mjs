@@ -1,5 +1,5 @@
 // Copies dist/ into the client checkouts beside this one, or with --check says which copies are out of date.
-//   node scripts/sync.mjs                  copies into ../briareus-android, ../briareus-quest, ../briareus-swift and ../briareus-windows
+//   node scripts/sync.mjs                  copies into ../briareus-android, ../briareus-swift and ../briareus-windows (Quest has not adopted the tokens yet)
 //   node scripts/sync.mjs --check          exits 1 if any client's copy differs from dist/
 //   node scripts/sync.mjs --root ~/src     looks for the clients under ~/src instead
 // Clients vendor the generated file rather than fetching it, so they build offline and review token changes as diffs.
@@ -9,7 +9,6 @@ import { existsSync } from 'node:fs';
 
 export const TARGETS = [
   { client: 'briareus-android', from: 'dist/kotlin/BriareusTokens.kt', to: 'app/src/main/kotlin/com/okanetsolutions/briareus/tokens/BriareusTokens.kt' },
-  { client: 'briareus-quest', from: 'dist/kotlin/BriareusTokens.kt', to: 'app/src/main/kotlin/com/okanetsolutions/briareus/tokens/BriareusTokens.kt' },
   { client: 'briareus-swift', from: 'dist/swift/BriareusTokens.swift', to: 'Mac/Core/BriareusTokens.swift' },
   { client: 'briareus-windows', from: 'dist/c/briareus_tokens.h', to: 'app/briareus_tokens.h' },
 ];

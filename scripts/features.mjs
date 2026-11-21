@@ -33,13 +33,15 @@ for (const area of data.areas) {
   md += '\n';
 }
 
-const withLeftovers = (data.retired ?? []).some((f) => Object.keys(f.leftovers ?? {}).length);
-md += `## Retired features\n\nFeatures the server or every client has dropped.${withLeftovers ? ' Leftovers are calls or screens a client still carries.' : ''}\n\n| Feature | Why |${withLeftovers ? ' Leftovers |' : ''}\n| --- | --- |${withLeftovers ? ' --- |' : ''}\n`;
-for (const f of data.retired ?? []) {
-  const left = Object.entries(f.leftovers ?? {}).map(([c, n]) => `**${NAMES[c]}:** ${cell(n)}`).join(' ');
-  md += `| **${cell(f.title)}** | ${cell(f.reason)} |${withLeftovers ? ` ${left} |` : ''}\n`;
+if ((data.retired ?? []).length) {
+  const withLeftovers = (data.retired ?? []).some((f) => Object.keys(f.leftovers ?? {}).length);
+  md += `## Retired features\n\nFeatures the server or every client has dropped.${withLeftovers ? ' Leftovers are calls or screens a client still carries.' : ''}\n\n| Feature | Why |${withLeftovers ? ' Leftovers |' : ''}\n| --- | --- |${withLeftovers ? ' --- |' : ''}\n`;
+  for (const f of data.retired ?? []) {
+    const left = Object.entries(f.leftovers ?? {}).map(([c, n]) => `**${NAMES[c]}:** ${cell(n)}`).join(' ');
+    md += `| **${cell(f.title)}** | ${cell(f.reason)} |${withLeftovers ? ` ${left} |` : ''}\n`;
+  }
+  md += '\n';
 }
-md += '\n';
 
 md += `## Server routes no client calls\n\n${data.unused_api.map((g) => `- **${g.group}:** ${g.routes.map((r) => `\`${r}\``).join(', ')}${g.note ? ` — ${g.note}` : ''}`).join('\n')}\n`;
 await writeFile(new URL('FEATURES.md', root), md);
