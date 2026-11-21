@@ -23,13 +23,13 @@ Across these drawings, the 🎙 Meet header button and the Meeting assistant and
 | Project · Database | [`project-db.excalidraw`](project-db.excalidraw) · [preview](project-db.svg) | Database browser |
 | Project · Forge | [`project-deploy.excalidraw`](project-deploy.excalidraw) · [preview](project-deploy.svg) | Laravel Forge sites |
 | Pull request | [`pull-request.excalidraw`](pull-request.excalidraw) · [preview](pull-request.svg) | PR overview, Files changed and diffs, PR comments and review threads, Run preview, Errands, Merge, Edit PR/issue and update branch, Detached windows / panels; the Findings tab drawn here is retired (core #228), and Windows retired the Checks and Commits tabs |
-| Issue | [`issue.excalidraw`](issue.excalidraw) · [preview](issue.svg) | Edit PR/issue and update branch, Issue page, Start a session on an issue, Close an issue |
+| Issue | [`issue.excalidraw`](issue.excalidraw) · [preview](issue.svg) | Edit PR/issue and update branch, Issue page, Start a session on an issue, Close an issue; its note that an epic is started from the web dashboard is out of date |
 | Findings | [`findings.excalidraw`](findings.excalidraw) · [preview](findings.svg) | Detached windows / panels; its findings queue and triage are retired (core #228), and its note that Windows lacks SSH approvals is out of date |
 | Dashboard | [`dashboard.excalidraw`](dashboard.excalidraw) · [preview](dashboard.svg) | Spend dashboard, Detached windows / panels; the drawing predates provider quotas on the dashboard, which Windows now lists, and its "web dashboard" token instructions are out of date |
 | Mail | [`mail.excalidraw`](mail.excalidraw) · [preview](mail.svg) | Mail inbox; the drawing shows the earlier reply-at-provider flow, Windows now replies in the thread |
 | WhatsApp | [`whatsapp.excalidraw`](whatsapp.excalidraw) · [preview](whatsapp.svg) | WhatsApp, Detached windows / panels |
 | Meeting assistant (retired) | [`meeting.excalidraw`](meeting.excalidraw) · [preview](meeting.svg) | None: the meeting assistant was removed from every client; kept for reference |
-| Settings · Projects | [`settings-projects.excalidraw`](settings-projects.excalidraw) · [preview](settings-projects.svg) | Adapt to server and token, Projects settings; the db chip on project rows drawn here is retired (core #274) |
+| Settings · Projects | [`settings-projects.excalidraw`](settings-projects.excalidraw) · [preview](settings-projects.svg) | Adapt to server and token, Projects settings; the db chip on project rows drawn here is retired (core #274); its "web dashboard" pointers (Prompts) are out of date |
 | Settings · Providers | [`settings-providers.excalidraw`](settings-providers.excalidraw) · [preview](settings-providers.svg) | Provider quotas, Providers settings |
 | Settings · SSH servers, Forge accounts | [`settings-servers.excalidraw`](settings-servers.excalidraw) · [preview](settings-servers.svg) | SSH servers, Forge accounts; the Database pool section drawn here is retired (core #274) |
 | Settings · This computer, Mail, MCP servers | [`settings.excalidraw`](settings.excalidraw) · [preview](settings.svg) | Mail accounts, MCP servers; the Meeting assistant section drawn here is retired |
@@ -59,7 +59,7 @@ Not drawn by design: Light and dark themes (colour comes from the tokens, and th
 
 ## Menu status proposal
 
-The [menu status preview](menu-status.svg) and [editable scene](menu-status.excalidraw) show a collapsible block for local CPU, memory, and battery readings, also included in the Home Assistant screens. See [scope and platform behavior](menu-status.md). These are example readings; telemetry is not implemented by this change.
+The [menu status preview](menu-status.svg) and [editable scene](menu-status.excalidraw) show a collapsible block for local CPU, memory, and battery readings, also included in the Home Assistant drawings. See [scope and platform behavior](menu-status.md). These are example readings; telemetry is not implemented by this change.
 
 ## Editing
 

@@ -2,7 +2,7 @@
 
 [Preview](menu-status.svg) · [Editable scene](menu-status.excalidraw)
 
-This proposal adds a collapsible local device status block above the menu's media player and footer. It also appears in the four Home Assistant screens. The readings are examples, and telemetry is not implemented by this change.
+This proposal adds a collapsible local device status block above the menu's media player and footer. It also appears in the four Home Assistant drawings. The readings are examples, and telemetry is not implemented by this change.
 
 | Reading | Example | Meaning |
 | --- | --- | --- |
