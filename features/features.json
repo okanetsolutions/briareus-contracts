@@ -74,7 +74,7 @@
           },
           "notes": {
             "windows": "Sign-out forgets the token locally without revoking it on the server.",
-            "mac": "Sign out is local only; it tells you to revoke the token in web Settings. revoke_token is in the core table but unused by the Mac UI.",
+            "mac": "Sign out is local only, and its message still points to web Settings, which no longer exists; tokens are revoked on the server with `npm run create-token -- --revoke`. revoke_token is in the core table but unused by the Mac UI.",
             "quest": "From the sidebar's settings menu."
           }
         },
@@ -117,7 +117,7 @@
           },
           "notes": {
             "windows": "Screens poll with backoff; GET /events is opened only by the sleep-mode wall, and /sessions/{id}/events is never used.",
-            "mac": "Paused while offline (see connectivity).",
+            "mac": "Paused while offline (see Weak or lost connection).",
             "ios": "Foreground only: iOS closes the streams in the background and they catch up on return; polling carries on where the server lacks them."
           },
           "wireframes": [
@@ -274,7 +274,7 @@
             "quest": "none"
           },
           "notes": {
-            "ios": "Worktree, Local or Orchestrator in New conversation; starting an epic stays on the web dashboard."
+            "ios": "Worktree, Local or Orchestrator in New conversation; an epic cannot be started from the iPhone/iPad app."
           },
           "wireframes": [
             "conversation"
@@ -1048,7 +1048,7 @@
             "quest": "none"
           },
           "notes": {
-            "windows": "Per project, a ✓ Review List tab on the board."
+            "windows": "Per project, a ✓ Review List tab on the project page."
           },
           "wireframes": [
             "project-review-list"

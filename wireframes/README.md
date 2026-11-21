@@ -4,6 +4,8 @@ One wireframe per screen, not one per platform, for the Windows client's screens
 
 [briareus-windows](https://github.com/okanetsolutions/briareus-windows) is the reference for how a screen looks: each wireframe is drawn from its layout code (`app/main.c`, `app/screen_*.c`), and the other clients match that structure, differing only where the platform notes say.
 
+Across these drawings, the 🎙 Meet header button and the Meeting assistant and Database pool entries in the settings sidebar are retired; the rows below note other retired parts.
+
 | Screen | File | Features |
 | --- | --- | --- |
 | Pairing | [`pairing.excalidraw`](pairing.excalidraw) · [preview](pairing.svg) | Pair with a device token, Adapt to server and token |
@@ -20,7 +22,7 @@ One wireframe per screen, not one per platform, for the Windows client's screens
 | Project · SFTP sessions | [`project-sftp.excalidraw`](project-sftp.excalidraw) · [preview](project-sftp.svg) | SFTP file browser |
 | Project · Database | [`project-db.excalidraw`](project-db.excalidraw) · [preview](project-db.svg) | Database browser |
 | Project · Forge | [`project-deploy.excalidraw`](project-deploy.excalidraw) · [preview](project-deploy.svg) | Laravel Forge sites |
-| Pull request | [`pull-request.excalidraw`](pull-request.excalidraw) · [preview](pull-request.svg) | PR overview, Files changed and diffs, PR comments and review threads, Run preview, Errands, Merge, Edit PR/issue and update branch, Detached windows / panels; the Findings tab drawn here is retired (core #228) |
+| Pull request | [`pull-request.excalidraw`](pull-request.excalidraw) · [preview](pull-request.svg) | PR overview, Files changed and diffs, PR comments and review threads, Run preview, Errands, Merge, Edit PR/issue and update branch, Detached windows / panels; the Findings tab drawn here is retired (core #228), and Windows retired the Checks and Commits tabs |
 | Issue | [`issue.excalidraw`](issue.excalidraw) · [preview](issue.svg) | Edit PR/issue and update branch, Issue page, Start a session on an issue, Close an issue |
 | Findings | [`findings.excalidraw`](findings.excalidraw) · [preview](findings.svg) | Detached windows / panels; its findings queue and triage are retired (core #228), and its note that Windows lacks SSH approvals is out of date |
 | Dashboard | [`dashboard.excalidraw`](dashboard.excalidraw) · [preview](dashboard.svg) | Spend dashboard, Detached windows / panels |

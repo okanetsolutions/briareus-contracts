@@ -92,9 +92,9 @@ StatusDot(color = p.statusColor(session.status))
 
 - Every client draws with these colours, and only these: no client keeps a palette of its own.
 - Every client supports light and dark, following the system's setting.
-
-Quest is the one exception for now: it keeps a hand copy of the dark palette in `ui/Theme.kt` until it adopts the generated file.
 - A status takes the same colour everywhere.
+
+Quest is the one exception for now: it keeps a hand copy of the dark palette in `ui/Theme.kt` and is dark only, until it adopts the generated file.
 
 ## Where the clients stood
 
