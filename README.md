@@ -77,14 +77,14 @@ static func statusColor(_ s: String?) -> Color { color(BriareusStatusRole(status
 static let body = Font.system(size: BriareusType.body.size, weight: weight(BriareusType.body.weight))  // 400 → .regular, 500 → .medium, 600 → .semibold
 ```
 
-**Android and Quest.** Light or dark as the system says; Quest adds the headset type (Android does this today; Quest is still dark only until it adopts the generated tokens):
+**Android.** Light or dark as the system says. Quest keeps a hand copy of the dark palette and `headset.type` in `ui/Theme.kt` for now; once it adopts the file it uses the same code with `BriareusHeadsetType`:
 
 ```kotlin
 val dark = isSystemInDarkTheme()
 val p = if (dark) BriareusPalette.Dark else BriareusPalette.Light
 val scheme = if (dark) darkColorScheme(primary = p.accent, background = p.canvas, /* … */)
              else lightColorScheme(primary = p.accent, background = p.canvas, /* … */)
-val type = Typography(bodyLarge = BriareusHeadsetType.bodyLarge, /* … */)
+val type = Typography(bodyLarge = BriareusType.body, /* … */)  // Quest: BriareusHeadsetType.bodyLarge
 StatusDot(color = p.statusColor(session.status))
 ```
 
@@ -109,7 +109,7 @@ The tokens start from the palette Windows, the Mac app and Quest already share: 
 | `idle` | ok (green) | secondary grey |
 | `cancelled` | warn | danger |
 
-The iPhone app moves onto the shared palette, in line with the Mac app it shares a core with: running sessions turn clay instead of green, finished ones green instead of grey. Quest, which was dark only, gains the light theme.
+The iPhone app moves onto the shared palette, in line with the Mac app it shares a core with: running sessions turn clay instead of green, finished ones green instead of grey. Quest, which is dark only, gains the light theme when it adopts the tokens.
 
 Charts: the usage dashboard's series colours were already shared by Windows, the Mac and iPhone, and read in both modes. The context bar's colours were tuned for dark only, at about 2.5:1 on a light surface; `chart.context.light` keeps their hues at 3:1. Each client looks a category up with `contextColor`/`briareus_context_color`, so the names Claude's /context report uses live here too.
 

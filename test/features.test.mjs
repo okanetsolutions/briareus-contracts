@@ -29,10 +29,11 @@ test('a partial or n/a mark says why', () => {
   }
 });
 
-test('every feature Windows offers names its screens, and each has a scene and a preview', () => {
+test('every feature Windows offers names its screens or says why it is not drawn, and each screen has a scene and a preview', () => {
   for (const f of data.areas.flatMap((a) => a.features)) {
     // Windows is the reference the wireframes are drawn from, so whatever it offers is on a screen.
-    if (['full', 'partial'].includes(f.support.windows)) assert.ok(f.wireframes?.length, `${f.id}: no wireframes`);
+    if (['full', 'partial'].includes(f.support.windows)) assert.ok(f.wireframes?.length || f.undrawn, `${f.id}: no wireframes and no undrawn reason`);
+    if (f.undrawn) assert.ok(!f.wireframes?.length, `${f.id}: undrawn but lists wireframes`);
     for (const w of f.wireframes ?? []) {
       for (const ext of ['excalidraw', 'svg']) {
         assert.ok(existsSync(new URL(`../wireframes/${w}.${ext}`, import.meta.url)), `${f.id}: no wireframes/${w}.${ext}`);

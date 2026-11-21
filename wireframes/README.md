@@ -7,7 +7,7 @@ One wireframe per screen, not one per platform, for every screen of the Windows 
 | Screen | File | Features |
 | --- | --- | --- |
 | Pairing | [`pairing.excalidraw`](pairing.excalidraw) · [preview](pairing.svg) | Pair with a device token, Adapt to server and token |
-| Conversation | [`conversation.excalidraw`](conversation.excalidraw) · [preview](conversation.svg) | Self-update, Projects and conversations, Bulk close/delete, Start a conversation, Worktree / Local / Orchestrator, Incremental transcript, Markdown replies, Collapsible tool activity, Session details panel, Send follow-ups, Attach files, Voice notes, Take back queued messages, Answer agent questions, Stop a turn, Close, reopen, delete, Rename, Compact and clear, List beside conversation, Detached windows / panels, Find in conversation |
+| Conversation | [`conversation.excalidraw`](conversation.excalidraw) · [preview](conversation.svg) | Self-update, Projects and conversations, Bulk close/delete, Start a conversation, Worktree / Local / Orchestrator, Incremental transcript, Markdown replies, Collapsible tool activity, Waiting on background work, Session details panel, Send follow-ups, Attach files, Voice notes, Take back queued messages, Answer agent questions, Stop a turn, Close, reopen, delete, Rename, Compact and clear, List beside conversation, Detached windows / panels, Find in conversation |
 | Shared browser | [`browser.excalidraw`](browser.excalidraw) · [preview](browser.svg) | Watch and drive the shared browser, Detached windows / panels |
 | ⚡ Webhook | [`webhook.excalidraw`](webhook.excalidraw) · [preview](webhook.svg) | Session webhook |
 | Project · Pull requests | [`project-pulls.excalidraw`](project-pulls.excalidraw) · [preview](project-pulls.svg) | Adapt to server and token, Saved state and incremental resume, Live session updates, Pull request list, Run preview, Errands, Merge |
@@ -22,7 +22,7 @@ One wireframe per screen, not one per platform, for every screen of the Windows 
 | Project · Forge | [`project-deploy.excalidraw`](project-deploy.excalidraw) · [preview](project-deploy.svg) | Laravel Forge sites |
 | Pull request | [`pull-request.excalidraw`](pull-request.excalidraw) · [preview](pull-request.svg) | PR overview, Files changed and diffs, PR comments and review threads, Run preview, Errands, Merge, Edit PR/issue and update branch, Detached windows / panels |
 | Issue | [`issue.excalidraw`](issue.excalidraw) · [preview](issue.svg) | Edit PR/issue and update branch, Issue page, Start a session on an issue, Close an issue |
-| Findings | [`findings.excalidraw`](findings.excalidraw) · [preview](findings.svg) | SSH and Slack approvals, Security overview, Pull requests waiting on you, Waiting/working overview, Detached windows / panels; its findings queue and triage are retired (core #228) |
+| Findings | [`findings.excalidraw`](findings.excalidraw) · [preview](findings.svg) | Waiting/working overview, Detached windows / panels; its findings queue and triage are retired (core #228) |
 | Dashboard | [`dashboard.excalidraw`](dashboard.excalidraw) · [preview](dashboard.svg) | Spend dashboard, Detached windows / panels |
 | Mail | [`mail.excalidraw`](mail.excalidraw) · [preview](mail.svg) | Mail inbox |
 | WhatsApp | [`whatsapp.excalidraw`](whatsapp.excalidraw) · [preview](whatsapp.svg) | WhatsApp, Detached windows / panels |
@@ -30,7 +30,7 @@ One wireframe per screen, not one per platform, for every screen of the Windows 
 | Settings · Projects | [`settings-projects.excalidraw`](settings-projects.excalidraw) · [preview](settings-projects.svg) | Adapt to server and token, Projects settings |
 | Settings · Providers | [`settings-providers.excalidraw`](settings-providers.excalidraw) · [preview](settings-providers.svg) | Provider quotas, Providers settings |
 | Settings · SSH servers, Forge accounts | [`settings-servers.excalidraw`](settings-servers.excalidraw) · [preview](settings-servers.svg) | SSH servers, Forge accounts; the Database pool section drawn here is retired (core #274) |
-| Settings · This computer, Mail, MCP servers | [`settings.excalidraw`](settings.excalidraw) · [preview](settings.svg) | Mail accounts, MCP servers |
+| Settings · This computer, Mail, MCP servers | [`settings.excalidraw`](settings.excalidraw) · [preview](settings.svg) | Mail accounts, MCP servers; the Meeting assistant section drawn here is retired |
 
 ## All sessions proposal
 
@@ -51,6 +51,8 @@ These four scenes, the menu status proposal, and their previews can be regenerat
 
 Not drawn, because Windows does not offer them (27): Revoke token from the app, Weak or lost connection, Pin conversations, Task cost history, Side question (/btw), Guard uncertain sends, QA loop toggle, Link a pull request, Recover interrupted session, Annotated preview feedback, QA recordings, GitHub deployments, Envoyer accounts & deployments, Agent memories, SSH host monitoring, Slack workspaces, Server administration, Devices & tokens, Personal connections, Sharing, Background notifications, Reply from notification, GPT-Realtime voice assistant, Hands-free conversation line, CarPlay, Slack inbox, Search conversations. When one is built, draw it from the client that has it.
 
+Offered by Windows but not drawn yet (16): Pictures in replies, Saved prompt library, Session mail wake, SSH and Slack approvals, Stored code reviews, Review outcome and security pass, Review approvals, Security overview, Resource stats, CI/CD statistics, GitHub accounts, Project GitHub account and health, Pull requests waiting on you, Light and dark themes, Sleep mode, Now playing. Each says so with `undrawn` in `features/features.json`; draw it from the Windows screen and replace `undrawn` with its `wireframes`.
+
 ## Menu status proposal
 
 The [menu status preview](menu-status.svg) and [editable scene](menu-status.excalidraw) show a collapsible block for local CPU, memory, and battery readings, also included in the Home Assistant proposals. See [scope and platform behavior](menu-status.md). These are example readings; telemetry is not implemented by this change.
@@ -64,4 +66,4 @@ The files are [Excalidraw](https://excalidraw.com) scenes, which are plain JSON,
 - **Name regions after the tokens.** Label boxes with the `theme.*` roles (`sidebar`, `canvas`, `raise`, `sunken`) and the `layout.*` widths (`sidebarWidth`, `panelWidth`, `narrowWidth`, `paneMargin`), so every client reads a box the same way.
 - **Draw wide and narrow.** One frame at or above `layout.narrowWidth` (1024px) and the one-column flow below it. A platform gets its own frame only where its structure differs, not just its chrome.
 - **Write platform differences as notes on the canvas**, under "Platform notes", in the same terms as the notes in [`features/features.json`](../features/features.json).
-- **Link features to their screens.** Each feature lists the screens it lives on, main one first, as `"wireframes": ["<file name without the extension>"]` in `features/features.json`, and FEATURES.md links to them. `npm test` fails if a feature Windows offers has no screen, or if a listed screen has no `.excalidraw` or `.svg`.
+- **Link features to their screens.** Each feature lists the screens it lives on, main one first, as `"wireframes": ["<file name without the extension>"]` in `features/features.json`, and FEATURES.md links to them. `npm test` fails if a feature Windows offers has no screen and no `"undrawn"` reason, or if a listed screen has no `.excalidraw` or `.svg`. Link a screen only if its drawing shows the feature.

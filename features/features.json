@@ -388,7 +388,7 @@
         {
           "id": "session-panel",
           "title": "Session details panel",
-          "description": "See the conversation's pull request, checks, reviews, findings and context use beside it.",
+          "description": "See the conversation's pull request, checks, reviews and context use beside it.",
           "api": [
             "GET /sessions/{id}",
             "GET /pulls/{number}"
@@ -443,9 +443,7 @@
           "notes": {
             "windows": "Pictures on other hosts load only after a click."
           },
-          "wireframes": [
-            "conversation"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
     },
@@ -581,9 +579,7 @@
             "windows": "Picker in the composer, New session and Give feedback; insert, save, edit and delete.",
             "ios": "Read-only: inserts saved prompts in errand input and CarPlay; no save, edit or delete, not in the conversation composer."
           },
-          "wireframes": [
-            "conversation"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "btw-side-question",
@@ -812,9 +808,7 @@
             "windows": "✉ Mail wake in the conversation header edits rules and caps (Admin).",
             "ios": "The iPhone app has no mail features to pick a rule's mailbox from."
           },
-          "wireframes": [
-            "webhook"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
     },
@@ -1107,9 +1101,7 @@
             "mac": "On ◉ Status (Waiting on you), Admin token.",
             "ios": "On the Status tab (Waiting on you), Admin token."
           },
-          "wireframes": [
-            "findings"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "pr-code-reviews",
@@ -1128,9 +1120,7 @@
             "quest": "none"
           },
           "notes": {},
-          "wireframes": [
-            "pull-request"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "review-outcome",
@@ -1147,9 +1137,7 @@
             "quest": "none"
           },
           "notes": {},
-          "wireframes": [
-            "pull-request"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "review-approvals",
@@ -1167,9 +1155,7 @@
             "quest": "none"
           },
           "notes": {},
-          "wireframes": [
-            "pull-request"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "security-overview",
@@ -1189,9 +1175,7 @@
           "notes": {
             "windows": "A Security screen opened from Status."
           },
-          "wireframes": [
-            "findings"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
     },
@@ -1509,9 +1493,7 @@
             "mac": "Resources from the conversation header; the Server dashboard from ◉ Status.",
             "ios": "Resources from the conversation's menu; the Server dashboard from the Status tab."
           },
-          "wireframes": [
-            "dashboard"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "ci-stats",
@@ -1529,9 +1511,7 @@
             "quest": "none"
           },
           "notes": {},
-          "wireframes": [
-            "dashboard"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "ssh-host-monitoring",
@@ -1778,9 +1758,7 @@
             "quest": "none"
           },
           "notes": {},
-          "wireframes": [
-            "settings"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "github-account-health",
@@ -1798,9 +1776,7 @@
             "quest": "none"
           },
           "notes": {},
-          "wireframes": [
-            "settings-projects"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "personal-connections",
@@ -1928,9 +1904,7 @@
             "mac": "For an Admin token.",
             "ios": "For an Admin token."
           },
-          "wireframes": [
-            "findings"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
     },
@@ -2257,9 +2231,7 @@
           "notes": {
             "quest": "Dark only until Quest adopts the generated tokens and their light palette."
           },
-          "wireframes": [
-            "conversation"
-          ]
+          "undrawn": "Colours come from the tokens; the wireframes are drawn in greys."
         },
         {
           "id": "sleep-mode",
@@ -2278,9 +2250,7 @@
             "quest": "none"
           },
           "notes": {},
-          "wireframes": [
-            "conversation"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
     },
@@ -2487,9 +2457,7 @@
             "windows": "Through Windows media sessions.",
             "mac": "Through Apple Events and Core Audio."
           },
-          "wireframes": [
-            "menu-status"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
     }

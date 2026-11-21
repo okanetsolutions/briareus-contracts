@@ -1,6 +1,6 @@
 # Home Assistant wireframes
 
-These are proposed client screens for the merged [Core bridge, PR #147](https://github.com/nadinyamaui/briareus/pull/147). They do not describe a shipped client UI. The bridge works independently of projects and agent sessions.
+These screens were drawn as proposals for the merged [Core bridge, PR #147](https://github.com/nadinyamaui/briareus/pull/147). Windows has since shipped them, reached from **Settings → Smart home**; for the other clients they are still proposals. The bridge works independently of projects and agent sessions.
 
 | Screen | Preview | Editable scene |
 | --- | --- | --- |
@@ -11,11 +11,11 @@ These are proposed client screens for the merged [Core bridge, PR #147](https://
 
 ## Navigation
 
-A proposed **Home Assistant** row below the projects opens the entities screen. It is global, so a project does not need to be selected. Show the entry only when the API catalog exposes the bridge and the Briareus token has admin access. Read and manage tokens cannot use any bridge route.
+Windows opens the screens from **Settings → Smart home**. The drawings show the original proposal, a **Home Assistant** row below the projects that opens the entities screen; a client porting them should follow Windows. It is global, so a project does not need to be selected. Show the entry only when the API catalog exposes the bridge and the Briareus token has admin access. Read and manage tokens cannot use any bridge route.
 
 On entry, check the connection. An unconfigured bridge opens the connection screen with setup guidance. A connected bridge opens entities. The wide header provides Entities, Actions, Events, and Connection destinations. Below 1024px, use a destination selector with those same labels under the Home Assistant title, followed by one pane at a time. The narrow drawings show the selected destination. Selecting an entity opens its detail pane; Back returns to the list with its domain filter intact.
 
-Windows supplies the existing 268px sidebar, navigation labels, and narrow Back behavior. The new row, destinations, and Home Assistant content are proposals. Windows and Mac use the wide composition. iPhone and narrow iPad use one pane. Quest uses the same ordering with `headset.type` sizes and scrolling. The drawings use greys and identify the shared layout and theme tokens. The sidebar also includes the proposed [local device status block](menu-status.md), which is independent of Home Assistant.
+Windows supplies the existing 268px sidebar, navigation labels, and narrow Back behavior. The row in the drawings is the original proposal; the destinations and content are what Windows ships. Windows and Mac use the wide composition. iPhone and narrow iPad use one pane. Quest uses the same ordering with `headset.type` sizes and scrolling. The drawings use greys and identify the shared layout and theme tokens. The sidebar also includes the proposed [local device status block](menu-status.md), which is independent of Home Assistant.
 
 ## API behavior
 
