@@ -1,5 +1,5 @@
 {
-  "$description": "What each Briareus client offers, feature by feature, against the server API (/api/v1). Support is full, partial, none, or n/a (the platform cannot, not merely does not). Audited from each client's code on 2026-11-21 (briareus-windows 1e5c281, briareus-swift c6c1d88, briareus-android 1fe2aab, briareus-quest c80a0ae) and against the server's /api/v1 at core c749e2a; update it in the same pull request that adds or removes a feature in a client.",
+  "$description": "What each Briareus client offers, feature by feature, against the server API (/api/v1). Support is full, partial, none, or n/a (the platform cannot, not merely does not). Audited from each client's code on 2026-11-21 (briareus-windows 70d3404, briareus-swift 385471c, briareus-android 84d2832, briareus-quest 28619fb) and against the server's /api/v1 at core c749e2a; update it in the same pull request that adds or removes a feature in a client.",
   "audited": "2026-11-21",
   "clients": [
     "windows",
@@ -403,7 +403,7 @@
           "notes": {
             "mac": "PR, commits, reviews, checks and context use; no findings any more.",
             "ios": "As a sheet rather than a side panel; no findings any more.",
-            "android": "Session details dialog (project, status, runtime, branch, cost, id) and a PR link; no checks, reviews, findings or context use.",
+            "android": "Session details dialog (project, status, runtime, branch, cost, id) and a PR link; no checks, reviews or context use.",
             "quest": "Opens the PR in a browser panel; no details side panel."
           },
           "wireframes": [
@@ -1895,14 +1895,14 @@
             "windows": "full",
             "mac": "full",
             "ios": "full",
-            "android": "partial",
+            "android": "full",
             "quest": "full"
           },
           "notes": {
             "windows": "◉ Status shows Need you/Working/Ready counts and answers questions inline; refreshed by polling GET /sessions, not /events.",
             "mac": "◉ Status in the sidebar strip, its badge the count needing you; answers questions in place.",
             "ios": "Its own Status tab, badged with the count needing you; answers questions in place.",
-            "android": "The status panel (counts, answer in place) opens only from the background service's notification; the sidebar's status button opens the Findings tab.",
+            "android": "A Status tab (counts, answering in place, refresh), and a narrow status panel opened from the background notification.",
             "quest": "Dedicated status panel."
           },
           "wireframes": [
@@ -2612,71 +2612,42 @@
     {
       "id": "review-loop",
       "title": "Review loop toggle",
-      "reason": "The server no longer has a per-session review loop toggle; core #228 removed it with the old code review system.",
-      "leftovers": {
-        "windows": "Still calls `POST /sessions/{id}/review-loop`.",
-        "android": "Still calls `POST /sessions/{id}/review-loop`.",
-        "quest": "Still calls `POST /sessions/{id}/review-loop`."
-      }
+      "reason": "The server no longer has a per-session review loop toggle; core #228 removed it with the old code review system."
     },
     {
       "id": "pr-babysitter",
       "title": "Pull request babysitter",
-      "reason": "Core #297 removed the pull request babysitter and its project setting.",
-      "leftovers": {}
+      "reason": "Core #297 removed the pull request babysitter and its project setting."
     },
     {
       "id": "findings-queue",
       "title": "Findings queue",
-      "reason": "Core #228 removed findings triage with the old code review system; stored code reviews replace it (see Code reviews & approvals).",
-      "leftovers": {
-        "windows": "Still calls `GET /pulls/{number}/findings`.",
-        "android": "Still calls `GET /pulls/{number}/findings`.",
-        "quest": "Still calls `GET /pulls/{number}/findings`."
-      }
+      "reason": "Core #228 removed findings triage with the old code review system; stored code reviews replace it (see Code reviews & approvals)."
     },
     {
       "id": "triage-round",
       "title": "Triage a held round",
-      "reason": "Core #228 removed held review rounds and their triage routes.",
-      "leftovers": {
-        "windows": "Still calls `POST /sessions/{id}/findings/triage`.",
-        "android": "Still calls `POST /sessions/{id}/findings/triage`.",
-        "quest": "Still calls `POST /sessions/{id}/findings/triage`."
-      }
+      "reason": "Core #228 removed held review rounds and their triage routes."
     },
     {
       "id": "foreign-review-actions",
       "title": "Reply/delete on others' reviews",
-      "reason": "Core #228 removed the findings reply and delete routes.",
-      "leftovers": {
-        "windows": "Still calls `POST /sessions/{id}/findings/reply` and `/delete`."
-      }
+      "reason": "Core #228 removed the findings reply and delete routes."
     },
     {
       "id": "pr-finding-decisions",
       "title": "Decide findings on a PR page",
-      "reason": "Core #228 removed `POST /pulls/{number}/findings/decision`; a verdict is now overruled on a stored code review.",
-      "leftovers": {
-        "windows": "Still calls the removed findings routes.",
-        "android": "Still calls the removed findings routes.",
-        "quest": "Still calls the removed findings routes."
-      }
+      "reason": "Core #228 removed `POST /pulls/{number}/findings/decision`; a verdict is now overruled on a stored code review."
     },
     {
       "id": "settings-db-pool",
       "title": "Database pool",
-      "reason": "Core #274 removed the session database server pool and `/settings/db-servers`.",
-      "leftovers": {
-        "mac": "The settings screen is still in the app; the server no longer offers its routes.",
-        "ios": "The settings screen is still in the app; the server no longer offers its routes."
-      }
+      "reason": "Core #274 removed the session database server pool and `/settings/db-servers`."
     },
     {
       "id": "meeting-assistant",
       "title": "Meeting assistant",
-      "reason": "Removed from Windows and the Mac in November 2026; no client offers it.",
-      "leftovers": {}
+      "reason": "Removed from Windows and the Mac in November 2026; no client offers it."
     }
   ]
 }

@@ -33,10 +33,11 @@ for (const area of data.areas) {
   md += '\n';
 }
 
-md += `## Retired features\n\nFeatures the server or every client has dropped. Leftovers are calls or screens a client still carries.\n\n| Feature | Why | Leftovers |\n| --- | --- | --- |\n`;
+const withLeftovers = (data.retired ?? []).some((f) => Object.keys(f.leftovers ?? {}).length);
+md += `## Retired features\n\nFeatures the server or every client has dropped.${withLeftovers ? ' Leftovers are calls or screens a client still carries.' : ''}\n\n| Feature | Why |${withLeftovers ? ' Leftovers |' : ''}\n| --- | --- |${withLeftovers ? ' --- |' : ''}\n`;
 for (const f of data.retired ?? []) {
   const left = Object.entries(f.leftovers ?? {}).map(([c, n]) => `**${NAMES[c]}:** ${cell(n)}`).join(' ');
-  md += `| **${cell(f.title)}** | ${cell(f.reason)} | ${left} |\n`;
+  md += `| **${cell(f.title)}** | ${cell(f.reason)} |${withLeftovers ? ` ${left} |` : ''}\n`;
 }
 md += '\n';
 
