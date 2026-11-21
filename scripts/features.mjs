@@ -3,7 +3,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 
 const root = new URL('..', import.meta.url);
 const data = JSON.parse(await readFile(new URL('features/features.json', root), 'utf8'));
-const NAMES = { windows: 'Windows', mac: 'Mac', ios: 'iPhone/iPad', quest: 'Quest' };
+const NAMES = { windows: 'Windows', mac: 'Mac', ios: 'iPhone/iPad', android: 'Android', quest: 'Quest' };
 const MARK = { full: '●', partial: '◐', none: '·', 'n/a': '–' };
 
 const all = data.areas.flatMap((a) => a.features);
@@ -32,6 +32,13 @@ for (const area of data.areas) {
   }
   md += '\n';
 }
+
+md += `## Retired features\n\nFeatures the server or every client has dropped. Leftovers are calls or screens a client still carries.\n\n| Feature | Why | Leftovers |\n| --- | --- | --- |\n`;
+for (const f of data.retired ?? []) {
+  const left = Object.entries(f.leftovers ?? {}).map(([c, n]) => `**${NAMES[c]}:** ${cell(n)}`).join(' ');
+  md += `| **${cell(f.title)}** | ${cell(f.reason)} | ${left} |\n`;
+}
+md += '\n';
 
 md += `## Server routes no client calls\n\n${data.unused_api.map((g) => `- **${g.group}:** ${g.routes.map((r) => `\`${r}\``).join(', ')}${g.note ? ` — ${g.note}` : ''}`).join('\n')}\n`;
 await writeFile(new URL('FEATURES.md', root), md);

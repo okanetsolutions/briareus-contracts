@@ -40,3 +40,12 @@ test('every feature Windows offers names its screens, and each has a scene and a
     }
   }
 });
+
+test('a retired feature is gone from the matrix and names only known clients', () => {
+  const live = new Set(data.areas.flatMap((a) => a.features.map((f) => f.id)));
+  for (const f of data.retired ?? []) {
+    assert.ok(!live.has(f.id), `${f.id} is both retired and live`);
+    assert.ok(f.reason, `${f.id}: retired without a reason`);
+    for (const client of Object.keys(f.leftovers ?? {})) assert.ok(data.clients.includes(client), `${f.id}: leftover for unknown ${client}`);
+  }
+});

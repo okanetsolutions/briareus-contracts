@@ -2,13 +2,14 @@
 
 [![CI](https://github.com/okanetsolutions/briareus-contracts/actions/workflows/ci.yml/badge.svg)](https://github.com/okanetsolutions/briareus-contracts/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-The design tokens of the [Briareus](https://github.com/nadinyamaui/briareus) clients in one place: colours for dark and light, what colour each session status takes, text styles, corner radii, layout widths and the working indicator. [Style Dictionary](https://styledictionary.com/info/tokens/) builds them into each client's own idiom, so a change here reaches Windows, the Mac, iPhone and iPad, and Quest as one reviewed diff instead of four hand edits.
+The design tokens of the [Briareus](https://github.com/nadinyamaui/briareus) clients in one place: colours for dark and light, what colour each session status takes, text styles, corner radii, layout widths and the working indicator. [Style Dictionary](https://styledictionary.com/info/tokens/) builds them into each client's own idiom, so a change here reaches Windows, the Mac, iPhone and iPad, Android and Quest as one reviewed diff instead of five hand edits.
 
 | Client | Gets | Copied to |
 | --- | --- | --- |
 | [briareus-windows](https://github.com/okanetsolutions/briareus-windows) (C11, Win32) | `dist/c/briareus_tokens.h`, header-only | `app/briareus_tokens.h` |
 | [briareus-swift](https://github.com/okanetsolutions/briareus-swift) (SwiftUI, Mac and iOS) | `dist/swift/BriareusTokens.swift`, no UIKit/AppKit | `Mac/Core/BriareusTokens.swift` |
-| [briareus-quest](https://github.com/okanetsolutions/briareus-quest) (Kotlin, Compose) | `dist/kotlin/BriareusTokens.kt` | `app/src/main/kotlin/com/okanetsolutions/briareus/tokens/BriareusTokens.kt` |
+| [briareus-android](https://github.com/okanetsolutions/briareus-android) (Kotlin, Compose) | `dist/kotlin/BriareusTokens.kt` | `app/src/main/kotlin/com/okanetsolutions/briareus/tokens/BriareusTokens.kt` |
+| [briareus-quest](https://github.com/okanetsolutions/briareus-quest) (Kotlin, Compose) | `dist/kotlin/BriareusTokens.kt` | Not adopted yet: `ui/Theme.kt` keeps a hand copy of the dark palette and headset type, with the same values |
 | Anything on the web (docs, a status page) | `dist/css/briareus-tokens.css`, `dist/json/briareus-tokens.json` | |
 
 The server ([nadinyamaui/briareus](https://github.com/nadinyamaui/briareus)) has no UI of its own any more; what it owns here is the vocabulary of session statuses (`running`, `idle`, `waiting`, …) that [`tokens/semantic/status.json`](tokens/semantic/status.json) maps to colours. When the server adds a status, add it there.
@@ -37,7 +38,7 @@ Tokens are in the [DTCG format](https://www.designtokens.org/tr/drafts/format/) 
 
 ## Features
 
-[FEATURES.md](FEATURES.md) shows, for each of the 99 tracked features, including proposed All sessions, Home Assistant screens and menu status widgets, whether Windows, the Mac, iPhone/iPad and Quest have it in full, in part, not at all, or cannot (n/a). It also lists the server routes no client calls. It is generated from [features/features.json](features/features.json): when a client gains or loses a feature, update the JSON in the same change and run `npm run build`.
+[FEATURES.md](FEATURES.md) shows, for each of the 109 tracked features, including proposed All sessions, Home Assistant screens and menu status widgets, whether Windows, the Mac, iPhone/iPad, Android and Quest have it in full, in part, not at all, or cannot (n/a). It also lists the features the server or every client dropped, with the calls clients still carry for them, and the server routes no client calls. It is generated from [features/features.json](features/features.json): when a client gains or loses a feature, update the JSON in the same change and run `npm run build`.
 
 ## Changing a token
 
@@ -76,7 +77,7 @@ static func statusColor(_ s: String?) -> Color { color(BriareusStatusRole(status
 static let body = Font.system(size: BriareusType.body.size, weight: weight(BriareusType.body.weight))  // 400 → .regular, 500 → .medium, 600 → .semibold
 ```
 
-**Quest.** Light or dark as the system says, with the headset type:
+**Android and Quest.** Light or dark as the system says; Quest adds the headset type (Android does this today, Quest is still dark only):
 
 ```kotlin
 val dark = isSystemInDarkTheme()
