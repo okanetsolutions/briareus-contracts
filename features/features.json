@@ -1729,7 +1729,7 @@
             "quest": "none"
           },
           "notes": {
-            "windows": "No /api/v1 route; tokens are issued on the server with npm run create-token.",
+            "windows": "No /api/v1 route; tokens are issued on the server with npm run create-token. Its pairing and dashboard screens still tell you to create a token on the web dashboard, which no longer exists.",
             "mac": "No /api/v1 route.",
             "ios": "No /api/v1 route.",
             "android": "No /api/v1 route.",
