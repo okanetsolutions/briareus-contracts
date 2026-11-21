@@ -2353,7 +2353,7 @@
             "quest": "none"
           },
           "notes": {
-            "windows": "Settings → Smart home shows the connection state, for Admin tokens only; no form to connect your own Home Assistant (PUT /me/home-assistant).",
+            "windows": "Settings → Smart home shows the connection state, for Admin tokens only; no form to connect your own Home Assistant (PUT /me/home-assistant), and its not-configured message names only the server variables, which serve the original operator.",
             "mac": "Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections.",
             "ios": "Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections."
           },

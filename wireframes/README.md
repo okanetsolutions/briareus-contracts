@@ -44,7 +44,7 @@ Windows ships a simpler version of these screens on core's Home Assistant bridge
 
 | Screen | File | Features |
 | --- | --- | --- |
-| Home Assistant · Connection | [scene](home-assistant-connection.excalidraw) · [preview](home-assistant-connection.svg) | Home Assistant connection |
+| Home Assistant · Connection | [scene](home-assistant-connection.excalidraw) · [preview](home-assistant-connection.svg) | Home Assistant connection; the drawing's admin-only gate and server-only credentials are out of date: the routes need `read` or `manage`, and each user connects their own with `PUT /me/home-assistant` |
 | Home Assistant · Entities | [scene](home-assistant.excalidraw) · [preview](home-assistant.svg) | Home Assistant entities, Home Assistant actions, Menu device status |
 | Home Assistant · Actions | [scene](home-assistant-action.excalidraw) · [preview](home-assistant-action.svg) | Home Assistant actions |
 | Home Assistant · Events | [scene](home-assistant-event.excalidraw) · [preview](home-assistant-event.svg) | Home Assistant events |
