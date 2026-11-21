@@ -46,7 +46,7 @@ Checked on 2026-10-12:
 - [Windows bf6359f](https://github.com/okanetsolutions/briareus-windows/tree/bf6359f9213979b52deef9f6d76f647109b359de): `app/main.c` and `app/screen_projects.c` define the reference shell; no Home Assistant client implementation was found.
 - [Swift abb71be](https://github.com/okanetsolutions/briareus-swift/tree/abb71bec5825319c769218601c8361d85b5bc81a) and [Quest c71fb2e](https://github.com/okanetsolutions/briareus-quest/tree/c71fb2e94a253075496f2a9db4b7ca8d1ad34161): no Home Assistant client implementation was found.
 
-The feature matrix records `none` for all four clients. Its wireframe links describe this proposal, not implemented support. The rest of the feature matrix retains its earlier audit date.
+Windows has since implemented these screens; the feature matrix records it as `full` and the other clients as `none` (audit of 2026-11-21).
 
 ## Editing
 

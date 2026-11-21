@@ -1,13 +1,13 @@
 # Wireframes
 
-One wireframe per screen, not one per platform, for every screen of the Windows client: Windows, the Mac, iPhone and iPad, and Quest all build the same structure. They set what sits where. Colour, type and spacing come from the tokens in [`tokens/`](../tokens), so the wireframes are drawn in greys on purpose.
+One wireframe per screen, not one per platform, for every screen of the Windows client: Windows, the Mac, iPhone and iPad, Android and Quest all build the same structure. They set what sits where. Colour, type and spacing come from the tokens in [`tokens/`](../tokens), so the wireframes are drawn in greys on purpose.
 
 [briareus-windows](https://github.com/okanetsolutions/briareus-windows) is the reference for how a screen looks: each wireframe is drawn from its layout code (`app/main.c`, `app/screen_*.c`), and the other clients match that structure, differing only where the platform notes say.
 
 | Screen | File | Features |
 | --- | --- | --- |
 | Pairing | [`pairing.excalidraw`](pairing.excalidraw) · [preview](pairing.svg) | Pair with a device token, Adapt to server and token |
-| Conversation | [`conversation.excalidraw`](conversation.excalidraw) · [preview](conversation.svg) | Self-update, Projects and conversations, Bulk close/delete, Start a conversation, Worktree / Local / Orchestrator, Incremental transcript, Markdown replies, Collapsible tool activity, Session details panel, Send follow-ups, Attach files, Voice notes, Take back queued messages, Answer agent questions, Stop a turn, Close, reopen, delete, Rename, Compact and clear, Review loop toggle, List beside conversation, Detached windows / panels, Find in conversation |
+| Conversation | [`conversation.excalidraw`](conversation.excalidraw) · [preview](conversation.svg) | Self-update, Projects and conversations, Bulk close/delete, Start a conversation, Worktree / Local / Orchestrator, Incremental transcript, Markdown replies, Collapsible tool activity, Session details panel, Send follow-ups, Attach files, Voice notes, Take back queued messages, Answer agent questions, Stop a turn, Close, reopen, delete, Rename, Compact and clear, List beside conversation, Detached windows / panels, Find in conversation |
 | Shared browser | [`browser.excalidraw`](browser.excalidraw) · [preview](browser.svg) | Watch and drive the shared browser, Detached windows / panels |
 | ⚡ Webhook | [`webhook.excalidraw`](webhook.excalidraw) · [preview](webhook.svg) | Session webhook |
 | Project · Pull requests | [`project-pulls.excalidraw`](project-pulls.excalidraw) · [preview](project-pulls.svg) | Adapt to server and token, Saved state and incremental resume, Live session updates, Pull request list, Run preview, Errands, Merge |
@@ -29,16 +29,16 @@ One wireframe per screen, not one per platform, for every screen of the Windows 
 | Meeting assistant (retired) | [`meeting.excalidraw`](meeting.excalidraw) · [preview](meeting.svg) | None: the meeting assistant was removed from every client; kept for reference |
 | Settings · Projects | [`settings-projects.excalidraw`](settings-projects.excalidraw) · [preview](settings-projects.svg) | Adapt to server and token, Projects settings |
 | Settings · Providers | [`settings-providers.excalidraw`](settings-providers.excalidraw) · [preview](settings-providers.svg) | Provider quotas, Providers settings |
-| Settings · Database pool, SSH servers, Forge accounts | [`settings-servers.excalidraw`](settings-servers.excalidraw) · [preview](settings-servers.svg) | Database pool, SSH servers, Forge accounts |
+| Settings · SSH servers, Forge accounts | [`settings-servers.excalidraw`](settings-servers.excalidraw) · [preview](settings-servers.svg) | SSH servers, Forge accounts; the Database pool section drawn here is retired (core #274) |
 | Settings · This computer, Mail, MCP servers | [`settings.excalidraw`](settings.excalidraw) · [preview](settings.svg) | Mail accounts, MCP servers |
 
 ## All sessions proposal
 
 The [All sessions preview](all-sessions.svg) and [editable scene](all-sessions.excalidraw) add **All** above the individual projects, opening a combined session list with a project label on every row. Wide and narrow layouts follow the existing Windows navigation. See [behavior, platform notes and source revision](all-sessions.md). This is a proposed client feature; regenerate both files with `node scripts/all-sessions-wireframes.mjs`.
 
-## Home Assistant proposals
+## Home Assistant
 
-Core's Home Assistant bridge is merged, but no client implements it yet. These proposed screens use the Windows shell and the bridge's existing API. See [behavior and source revisions](home-assistant.md).
+Windows implements these screens on core's Home Assistant bridge; the other clients do not yet. They were drawn as proposals in the Windows shell before it shipped them. See [behavior and source revisions](home-assistant.md).
 
 | Screen | File | Features |
 | --- | --- | --- |
@@ -49,7 +49,7 @@ Core's Home Assistant bridge is merged, but no client implements it yet. These p
 
 These four scenes, the menu status proposal, and their previews can be regenerated together with `node scripts/home-assistant-wireframes.mjs`.
 
-Not drawn, because Windows does not offer them (24): Revoke token from the app, Task cost history, Saved prompt library, Side question (/btw), QA loop toggle, Link a pull request, Recover interrupted session, Annotated preview feedback, QA recordings, SSH and Slack approvals, GitHub deployments, Envoyer accounts & deployments, Agent memories, Slack workspaces, Server administration, Devices & tokens, Background notifications, Reply from notification, GPT-Realtime voice assistant, Hands-free conversation line, CarPlay, Slack inbox, Search conversations, Resource stats. When one is built, draw it from the client that has it.
+Not drawn, because Windows does not offer them (27): Revoke token from the app, Weak or lost connection, Pin conversations, Task cost history, Side question (/btw), Guard uncertain sends, QA loop toggle, Link a pull request, Recover interrupted session, Annotated preview feedback, QA recordings, GitHub deployments, Envoyer accounts & deployments, Agent memories, SSH host monitoring, Slack workspaces, Server administration, Devices & tokens, Personal connections, Sharing, Background notifications, Reply from notification, GPT-Realtime voice assistant, Hands-free conversation line, CarPlay, Slack inbox, Search conversations. When one is built, draw it from the client that has it.
 
 ## Menu status proposal
 

@@ -240,7 +240,7 @@
         {
           "id": "new-session",
           "title": "Start a conversation",
-          "description": "Start a session on a chosen branch, provider, model and effort, or the project default, optionally with the review loop.",
+          "description": "Start a session on a chosen branch, provider, model and effort, or the project default.",
           "api": [
             "GET /branches",
             "GET /runtimes",
@@ -714,7 +714,7 @@
         {
           "id": "qa-loop",
           "title": "QA loop toggle",
-          "description": "Arm automatic QA after the review loop passes.",
+          "description": "Arm an automatic QA run on a session.",
           "api": [
             "POST /sessions/{id}/qa-loop"
           ],
@@ -1850,7 +1850,7 @@
         {
           "id": "system-notifications",
           "title": "Background notifications",
-          "description": "Get OS notifications when an agent asks, a turn finishes, findings are held or a session fails.",
+          "description": "Get OS notifications when an agent asks, a turn finishes or a session fails.",
           "api": [
             "GET /events"
           ],
@@ -1969,8 +1969,7 @@
           "description": "Talk to one conversation's agent by voice and hear its replies and questions read aloud.",
           "api": [
             "GET /sessions/{id}",
-            "POST /sessions/{id}/messages",
-            "POST /sessions/{id}/findings/triage"
+            "POST /sessions/{id}/messages"
           ],
           "support": {
             "windows": "none",
@@ -2256,7 +2255,7 @@
             "quest": "none"
           },
           "notes": {
-            "quest": "Always dark by design; a bright panel glares in a headset."
+            "quest": "Dark only until Quest adopts the generated tokens and their light palette."
           },
           "wireframes": [
             "conversation"
@@ -2355,12 +2354,12 @@
     },
     {
       "id": "home-assistant",
-      "title": "Home Assistant (proposed client screens)",
+      "title": "Home Assistant",
       "features": [
         {
           "id": "home-assistant-connection",
           "title": "Home Assistant connection",
-          "description": "Check the server-configured bridge with an admin token; proposed UI, no client implementation.",
+          "description": "Check the server-configured bridge with an admin token.",
           "api": [
             "GET /home-assistant"
           ],
@@ -2383,7 +2382,7 @@
         {
           "id": "home-assistant-entities",
           "title": "Home Assistant entities",
-          "description": "Browse and filter entities, inspect their states and attributes, and poll while visible; proposed UI.",
+          "description": "Browse and filter entities, inspect their states and attributes, and poll while visible.",
           "api": [
             "GET /home-assistant/entities",
             "GET /home-assistant/entities/{id}"
@@ -2405,7 +2404,7 @@
         {
           "id": "home-assistant-actions",
           "title": "Home Assistant actions",
-          "description": "Discover services, send service data, and inspect receipts without automatic retries; proposed UI.",
+          "description": "Discover services, send service data, and inspect receipts without automatic retries.",
           "api": [
             "GET /home-assistant/services",
             "POST /home-assistant/services/{domain}/{service}"
@@ -2426,7 +2425,7 @@
         {
           "id": "home-assistant-events",
           "title": "Home Assistant events",
-          "description": "Send an event to an existing Home Assistant automation; proposed UI, no event subscription.",
+          "description": "Send an event to an existing Home Assistant automation; no event subscription.",
           "api": [
             "POST /home-assistant/events/{type}"
           ],
