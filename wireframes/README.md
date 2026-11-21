@@ -4,7 +4,7 @@ One wireframe per screen, not one per platform, for the Windows client's screens
 
 [briareus-windows](https://github.com/okanetsolutions/briareus-windows) is the reference for how a screen looks: each wireframe is drawn from its layout code (`app/main.c`, `app/screen_*.c`), and the other clients match that structure, differing only where the platform notes say.
 
-Across these drawings, the 🎙 Meet header button and the Meeting assistant and Database pool entries in the settings sidebar are retired; the rows below note other retired parts.
+Across these drawings, the 🎙 Meet header button, the Meeting assistant and Database pool entries in the settings sidebar, the db chip on its project rows and any Findings section in a session panel are retired; the rows below note other retired parts.
 
 | Screen | File | Features |
 | --- | --- | --- |
