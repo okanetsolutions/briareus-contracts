@@ -1,16 +1,16 @@
 # Wireframes
 
-One wireframe per screen, not one per platform, for every screen of the Windows client: Windows, the Mac, iPhone and iPad, Android and Quest all build the same structure. They set what sits where. Colour, type and spacing come from the tokens in [`tokens/`](../tokens), so the wireframes are drawn in greys on purpose.
+One wireframe per screen, not one per platform, for the Windows client's screens (the ones not drawn yet are listed below): Windows, the Mac, iPhone and iPad, Android and Quest all build the same structure. They set what sits where. Colour, type and spacing come from the tokens in [`tokens/`](../tokens), so the wireframes are drawn in greys on purpose.
 
 [briareus-windows](https://github.com/okanetsolutions/briareus-windows) is the reference for how a screen looks: each wireframe is drawn from its layout code (`app/main.c`, `app/screen_*.c`), and the other clients match that structure, differing only where the platform notes say.
 
 | Screen | File | Features |
 | --- | --- | --- |
 | Pairing | [`pairing.excalidraw`](pairing.excalidraw) · [preview](pairing.svg) | Pair with a device token, Adapt to server and token |
-| Conversation | [`conversation.excalidraw`](conversation.excalidraw) · [preview](conversation.svg) | Self-update, Projects and conversations, Bulk close/delete, Start a conversation, Worktree / Local / Orchestrator, Incremental transcript, Markdown replies, Collapsible tool activity, Waiting on background work, Session details panel, Send follow-ups, Attach files, Voice notes, Take back queued messages, Answer agent questions, Stop a turn, Close, reopen, delete, Rename, Compact and clear, List beside conversation, Detached windows / panels, Find in conversation |
+| Conversation | [`conversation.excalidraw`](conversation.excalidraw) · [preview](conversation.svg) | Projects and conversations, Bulk close/delete, Start a conversation, Worktree / Local / Orchestrator, Incremental transcript, Markdown replies, Collapsible tool activity, Session details panel, Send follow-ups, Attach files, Voice notes, Take back queued messages, Answer agent questions, Stop a turn, Close, reopen, delete, Rename, Compact and clear, List beside conversation, Detached windows / panels, Find in conversation; the review loop chip and findings section drawn here are retired (core #228) |
 | Shared browser | [`browser.excalidraw`](browser.excalidraw) · [preview](browser.svg) | Watch and drive the shared browser, Detached windows / panels |
 | ⚡ Webhook | [`webhook.excalidraw`](webhook.excalidraw) · [preview](webhook.svg) | Session webhook |
-| Project · Pull requests | [`project-pulls.excalidraw`](project-pulls.excalidraw) · [preview](project-pulls.svg) | Adapt to server and token, Saved state and incremental resume, Live session updates, Pull request list, Run preview, Errands, Merge |
+| Project · Pull requests | [`project-pulls.excalidraw`](project-pulls.excalidraw) · [preview](project-pulls.svg) | Adapt to server and token, Saved state and incremental resume, Live session updates, Pull request list, Run preview, Errands, Merge; the Meeting tab drawn here is retired |
 | Project · Issues | [`project-issues.excalidraw`](project-issues.excalidraw) · [preview](project-issues.svg) | Issue list |
 | Project · Board | [`project-board.excalidraw`](project-board.excalidraw) · [preview](project-board.svg) | Issue page, GitHub Projects board |
 | Project · Review List | [`project-review-list.excalidraw`](project-review-list.excalidraw) · [preview](project-review-list.svg) | Errands, Merge, Review List |
@@ -20,11 +20,11 @@ One wireframe per screen, not one per platform, for every screen of the Windows 
 | Project · SFTP sessions | [`project-sftp.excalidraw`](project-sftp.excalidraw) · [preview](project-sftp.svg) | SFTP file browser |
 | Project · Database | [`project-db.excalidraw`](project-db.excalidraw) · [preview](project-db.svg) | Database browser |
 | Project · Forge | [`project-deploy.excalidraw`](project-deploy.excalidraw) · [preview](project-deploy.svg) | Laravel Forge sites |
-| Pull request | [`pull-request.excalidraw`](pull-request.excalidraw) · [preview](pull-request.svg) | PR overview, Files changed and diffs, PR comments and review threads, Run preview, Errands, Merge, Edit PR/issue and update branch, Detached windows / panels |
+| Pull request | [`pull-request.excalidraw`](pull-request.excalidraw) · [preview](pull-request.svg) | PR overview, Files changed and diffs, PR comments and review threads, Run preview, Errands, Merge, Edit PR/issue and update branch, Detached windows / panels; the Findings tab drawn here is retired (core #228) |
 | Issue | [`issue.excalidraw`](issue.excalidraw) · [preview](issue.svg) | Edit PR/issue and update branch, Issue page, Start a session on an issue, Close an issue |
-| Findings | [`findings.excalidraw`](findings.excalidraw) · [preview](findings.svg) | Waiting/working overview, Detached windows / panels; its findings queue and triage are retired (core #228) |
+| Findings | [`findings.excalidraw`](findings.excalidraw) · [preview](findings.svg) | Detached windows / panels; its findings queue and triage are retired (core #228), and its note that Windows lacks SSH approvals is out of date |
 | Dashboard | [`dashboard.excalidraw`](dashboard.excalidraw) · [preview](dashboard.svg) | Spend dashboard, Detached windows / panels |
-| Mail | [`mail.excalidraw`](mail.excalidraw) · [preview](mail.svg) | Mail inbox |
+| Mail | [`mail.excalidraw`](mail.excalidraw) · [preview](mail.svg) | Mail inbox; the drawing shows the earlier reply-at-provider flow, Windows now replies in the thread |
 | WhatsApp | [`whatsapp.excalidraw`](whatsapp.excalidraw) · [preview](whatsapp.svg) | WhatsApp, Detached windows / panels |
 | Meeting assistant (retired) | [`meeting.excalidraw`](meeting.excalidraw) · [preview](meeting.svg) | None: the meeting assistant was removed from every client; kept for reference |
 | Settings · Projects | [`settings-projects.excalidraw`](settings-projects.excalidraw) · [preview](settings-projects.svg) | Adapt to server and token, Projects settings |
@@ -42,16 +42,18 @@ Windows implements these screens on core's Home Assistant bridge; the other clie
 
 | Screen | File | Features |
 | --- | --- | --- |
-| Home Assistant · Connection | [scene](home-assistant-connection.excalidraw) · [preview](home-assistant-connection.svg) | Connection, setup guidance, admin access, connection errors |
-| Home Assistant · Entities | [scene](home-assistant.excalidraw) · [preview](home-assistant.svg) | Domain filter, entity details, state and attributes |
-| Home Assistant · Actions | [scene](home-assistant-action.excalidraw) · [preview](home-assistant-action.svg) | Service discovery, inputs, response data, unconfirmed actions |
-| Home Assistant · Events | [scene](home-assistant-event.excalidraw) · [preview](home-assistant-event.svg) | Event type and data, accepted and unconfirmed receipts |
+| Home Assistant · Connection | [scene](home-assistant-connection.excalidraw) · [preview](home-assistant-connection.svg) | Home Assistant connection |
+| Home Assistant · Entities | [scene](home-assistant.excalidraw) · [preview](home-assistant.svg) | Home Assistant entities, Home Assistant actions, Menu device status |
+| Home Assistant · Actions | [scene](home-assistant-action.excalidraw) · [preview](home-assistant-action.svg) | Home Assistant actions |
+| Home Assistant · Events | [scene](home-assistant-event.excalidraw) · [preview](home-assistant-event.svg) | Home Assistant events |
 
 These four scenes, the menu status proposal, and their previews can be regenerated together with `node scripts/home-assistant-wireframes.mjs`.
 
 Not drawn, because Windows does not offer them (27): Revoke token from the app, Weak or lost connection, Pin conversations, Task cost history, Side question (/btw), Guard uncertain sends, QA loop toggle, Link a pull request, Recover interrupted session, Annotated preview feedback, QA recordings, GitHub deployments, Envoyer accounts & deployments, Agent memories, SSH host monitoring, Slack workspaces, Server administration, Devices & tokens, Personal connections, Sharing, Background notifications, Reply from notification, GPT-Realtime voice assistant, Hands-free conversation line, CarPlay, Slack inbox, Search conversations. When one is built, draw it from the client that has it.
 
-Offered by Windows but not drawn yet (16): Pictures in replies, Saved prompt library, Session mail wake, SSH and Slack approvals, Stored code reviews, Review outcome and security pass, Review approvals, Security overview, Resource stats, CI/CD statistics, GitHub accounts, Project GitHub account and health, Pull requests waiting on you, Light and dark themes, Sleep mode, Now playing. Each says so with `undrawn` in `features/features.json`; draw it from the Windows screen and replace `undrawn` with its `wireframes`.
+Offered by Windows but not drawn yet (18): Self-update, Waiting on background work, Pictures in replies, Saved prompt library, Session mail wake, SSH and Slack approvals, Stored code reviews, Review outcome and security pass, Review approvals, Security overview, Resource stats, CI/CD statistics, GitHub accounts, Project GitHub account and health, Waiting/working overview, Pull requests waiting on you, Sleep mode, Now playing. Each says so with `undrawn` in `features/features.json`; draw it from the Windows screen and replace `undrawn` with its `wireframes`.
+
+Not drawn by design: Light and dark themes (colour comes from the tokens, and the wireframes are greys).
 
 ## Menu status proposal
 

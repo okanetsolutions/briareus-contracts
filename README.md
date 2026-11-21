@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/okanetsolutions/briareus-contracts/actions/workflows/ci.yml/badge.svg)](https://github.com/okanetsolutions/briareus-contracts/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-The design tokens of the [Briareus](https://github.com/nadinyamaui/briareus) clients in one place: colours for dark and light, what colour each session status takes, text styles, corner radii, layout widths and the working indicator. [Style Dictionary](https://styledictionary.com/info/tokens/) builds them into each client's own idiom, so a change here reaches Windows, the Mac, iPhone and iPad, Android and Quest as one reviewed diff instead of five hand edits.
+The design tokens of the [Briareus](https://github.com/nadinyamaui/briareus) clients in one place: colours for dark and light, what colour each session status takes, text styles, corner radii, layout widths and the working indicator. [Style Dictionary](https://styledictionary.com/info/tokens/) builds them into each client's own idiom, so a change here reaches Windows, the Mac, iPhone and iPad, and Android as one reviewed diff instead of four hand edits. Quest still needs a hand edit in `ui/Theme.kt` until it adopts the generated file.
 
 | Client | Gets | Copied to |
 | --- | --- | --- |
@@ -54,7 +54,7 @@ npm run check
 
 That builds `dist/`, checks contrast (ink on every surface ≥ 4.5:1, muted on canvas and sidebar ≥ 4.5:1, accent and status colours on canvas ≥ 3:1, chart colours ≥ 3:1 on the surfaces they sit on, both modes), and fails if the committed `dist/` differs from what the tokens build. Commit `tokens/` and `dist/` together.
 
-Each client then copies its file from `dist/` to the path in the table above.
+Each adopting client then copies its file from `dist/` to the path in the table above (`node scripts/sync.mjs` does it for checkouts beside this one).
 
 ## Using the tokens
 

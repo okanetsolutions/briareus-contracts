@@ -141,9 +141,7 @@
             "android": "Signed APKs on GitHub releases, no in-app updater; Android could install updates.",
             "quest": "Sideloaded APK with no updater; Android could install updates."
           },
-          "wireframes": [
-            "conversation"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "weak-connection",
@@ -381,9 +379,7 @@
             "android": "Working line shows only the last tool.",
             "quest": "Working line shows only the last tool."
           },
-          "wireframes": [
-            "conversation"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "session-panel",
@@ -1881,9 +1877,7 @@
             "android": "A Status tab (counts, answering in place, refresh), and a narrow status panel opened from the background notification.",
             "quest": "Dedicated status panel."
           },
-          "wireframes": [
-            "findings"
-          ]
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
         },
         {
           "id": "pull-attention",
