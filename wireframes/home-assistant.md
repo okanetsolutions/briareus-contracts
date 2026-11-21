@@ -46,7 +46,7 @@ The original proposal was drawn from these revisions, checked on 2026-10-12:
 - [Windows bf6359f](https://github.com/okanetsolutions/briareus-windows/tree/bf6359f9213979b52deef9f6d76f647109b359de): `app/main.c` and `app/screen_projects.c` define the reference shell; no Home Assistant client implementation was found.
 - [Swift abb71be](https://github.com/okanetsolutions/briareus-swift/tree/abb71bec5825319c769218601c8361d85b5bc81a) and [Quest c71fb2e](https://github.com/okanetsolutions/briareus-quest/tree/c71fb2e94a253075496f2a9db4b7ca8d1ad34161): no Home Assistant client implementation was found.
 
-The current text follows [Core c749e2a](https://github.com/nadinyamaui/briareus/tree/c749e2a) (`lib/api-v1-catalog.js`: per-user routes and `/me/home-assistant`) and [Windows 70d3404](https://github.com/okanetsolutions/briareus-windows/tree/70d3404) (`app/screen_home_assistant.c`), checked on 2026-11-21. The feature matrix marks Windows full for entities, actions and events and partial for the connection (Admin tokens only, no personal-connection form), and the other clients none.
+The current text follows [Core c749e2a](https://github.com/nadinyamaui/briareus/tree/c749e2a) (`lib/api-v1-catalog.js`: per-user routes and `/me/home-assistant`) and [Windows 70d3404](https://github.com/okanetsolutions/briareus-windows/tree/70d3404) (`app/screen_home_assistant.c`), checked on 2026-11-21. The feature matrix marks Windows full for entities, actions and events and partial for the connection (no personal-connection form, and its not-configured message names only the server variables); all four are shown to Admin tokens only, and the other clients none.
 
 ## Editing
 
