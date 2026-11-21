@@ -57,7 +57,7 @@ Not drawn by design: Light and dark themes (colour comes from the tokens, and th
 
 ## Menu status proposal
 
-The [menu status preview](menu-status.svg) and [editable scene](menu-status.excalidraw) show a collapsible block for local CPU, memory, and battery readings, also included in the Home Assistant proposals. See [scope and platform behavior](menu-status.md). These are example readings; telemetry is not implemented by this change.
+The [menu status preview](menu-status.svg) and [editable scene](menu-status.excalidraw) show a collapsible block for local CPU, memory, and battery readings, also included in the Home Assistant screens. See [scope and platform behavior](menu-status.md). These are example readings; telemetry is not implemented by this change.
 
 ## Editing
 

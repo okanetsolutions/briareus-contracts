@@ -9,8 +9,8 @@ What each Briareus client offers, feature by feature, against the server API (/a
 | --- | --- | --- | --- | --- | --- |
 | ● full | 76 | 89 | 67 | 33 | 28 |
 | ◐ partial | 4 | 1 | 3 | 11 | 7 |
-| · none | 28 | 18 | 38 | 65 | 73 |
-| – n/a | 1 | 1 | 1 | 0 | 1 |
+| · none | 28 | 18 | 38 | 64 | 73 |
+| – n/a | 1 | 1 | 1 | 1 | 1 |
 
 ## Connection & pairing
 
@@ -88,7 +88,7 @@ What each Briareus client offers, feature by feature, against the server API (/a
 | **Errands**<br>Start code review, solve conflicts, fix checks, implement feedback, test sheet, record QA and other errands; the suggested one is highlighted. Wireframe: [pull-request](wireframes/pull-request.svg), [project-pulls](wireframes/project-pulls.svg), [project-review-list](wireframes/project-review-list.svg) | ● | ● | ● | ● | ● |  |
 | **Merge**<br>Merge a PR at the head read, after being told what stands in the way. Wireframe: [pull-request](wireframes/pull-request.svg), [project-pulls](wireframes/project-pulls.svg), [project-review-list](wireframes/project-review-list.svg) | ● | ● | ● | ● | ● | **iPhone/iPad:** Also by swipe on the list row. |
 | **Edit PR/issue and update branch**<br>Edit title, Markdown body, labels and assignees (incl. Assign me) on GitHub, and merge the base into a PR (Update branch). Wireframe: [issue](wireframes/issue.svg), [pull-request](wireframes/pull-request.svg) | ● | ● | ● | · | · |  |
-| **Review List**<br>A tab of PRs waiting on your review (required-dev-review / feedback-implemented). Wireframe: [project-review-list](wireframes/project-review-list.svg) | ● | ● | ● | · | · | **Windows:** Per project, a ✓ Review List tab on the board. |
+| **Review List**<br>A tab of PRs waiting on your review (requires-dev-review / feedback-implemented). Wireframe: [project-review-list](wireframes/project-review-list.svg) | ● | ● | ● | · | · | **Windows:** Per project, a ✓ Review List tab on the board. |
 | **QA recordings**<br>Play the videos a Record QA run captured. | · | ● | · | · | · |  |
 
 ## Code reviews & approvals
@@ -164,7 +164,7 @@ What each Briareus client offers, feature by feature, against the server API (/a
 | --- | :---: | :---: | :---: | :---: | :---: | --- |
 | **GPT-Realtime voice assistant**<br>Hold a spoken conversation that reads and acts on projects, PRs, issues and conversations, with confirmation and cost. | · | · | · | ● | ● | **iPhone/iPad:** Removed (realtime voice assistant dropped). **Android:** Across all projects and drives the app's screens; needs the user's own OpenAI key. **Quest:** Across all projects, and also drives the panels ('show me this PR'). |
 | **Hands-free conversation line**<br>Talk to one conversation's agent by voice and hear its replies and questions read aloud. | · | · | · | ◐ | ◐ | **iPhone/iPad:** Removed (hands-free conversation line dropped). **Android:** The global assistant can answer an agent, but there is no dedicated per-conversation read-aloud line. **Quest:** The global assistant can answer an agent, but there is no dedicated per-conversation read-aloud line. |
-| **CarPlay**<br>Drive conversations, PRs and issues by dictation in CarPlay. | – | – | ● | · | – | **Windows:** No CarPlay on Windows. **Mac:** No CarPlay on macOS. **iPhone/iPad:** iOS 26.4 or later; dictation only, the app never speaks. **Android:** CarPlay is Apple-only; the Android counterpart (Android Auto) is not built. **Quest:** No CarPlay or car integration on Quest. |
+| **CarPlay**<br>Drive conversations, PRs and issues by dictation in CarPlay. | – | – | ● | – | – | **Windows:** No CarPlay on Windows. **Mac:** No CarPlay on macOS. **iPhone/iPad:** iOS 26.4 or later; dictation only, the app never speaks. **Android:** CarPlay is Apple-only; Android Auto would be a feature of its own. **Quest:** No CarPlay or car integration on Quest. |
 
 ## Shared browser
 
@@ -193,9 +193,10 @@ What each Briareus client offers, feature by feature, against the server API (/a
 | Feature | Windows | Mac | iPhone/iPad | Android | Quest | Notes |
 | --- | :---: | :---: | :---: | :---: | :---: | --- |
 | **List beside conversation**<br>Projects/conversations column beside the chosen conversation, collapsing to one column when narrow. Wireframe: [conversation](wireframes/conversation.svg) | ● | ● | ● | ● | ● | **iPhone/iPad:** iPad only; iPhone is single-column. **Android:** 268dp sidebar beside the detail at 1024dp and wider; one pane with Back below. |
-| **Detached windows / panels**<br>Pop a conversation, findings, dashboard or browser into its own window/panel. Wireframe: [conversation](wireframes/conversation.svg), [browser](wireframes/browser.svg), [dashboard](wireframes/dashboard.svg), [findings](wireframes/findings.svg), [pull-request](wireframes/pull-request.svg), [whatsapp](wireframes/whatsapp.svg) | ● | ● | ● | ◐ | ● | **iPhone/iPad:** iPad only (Open in New Window); an iPhone has one window. **Android:** Preview, voice and status open as their own resizable activities; a conversation's pop-out button and notifications open it in the main window, not its own. **Quest:** Conversations, preview, status and voice as separate panels. |
+| **Detached windows / panels**<br>Pop a conversation, the Findings screen, dashboard or browser into its own window/panel. Wireframe: [conversation](wireframes/conversation.svg), [browser](wireframes/browser.svg), [dashboard](wireframes/dashboard.svg), [findings](wireframes/findings.svg), [pull-request](wireframes/pull-request.svg), [whatsapp](wireframes/whatsapp.svg) | ● | ● | ● | ◐ | ● | **iPhone/iPad:** iPad only (Open in New Window); an iPhone has one window. **Android:** Preview, voice and status open as their own resizable activities; a conversation's pop-out button and notifications open it in the main window, not its own. **Quest:** Conversations, preview, status and voice as separate panels. |
 | **Light and dark themes**<br>Follow the system's light or dark appearance with the shared palettes. Wireframe: Colours come from the tokens; the wireframes are drawn in greys. | ● | ● | ● | ● | · | **Quest:** Dark only until Quest adopts the generated tokens and their light palette. |
 | **Sleep mode**<br>After a chosen idle time, a wall replays working sessions' files and commands live until any input wakes the app. Wireframe: not drawn yet. | ● | ● | ● | · | · |  |
+| **Now playing**<br>The sidebar foot shows what Spotify or another media app is playing, with previous, play/pause, next and volume. Wireframe: not drawn yet. | ● | ● | · | · | · | **Windows:** Through Windows media sessions. **Mac:** Through Apple Events and Core Audio. |
 
 ## Search & find
 
@@ -209,7 +210,7 @@ What each Briareus client offers, feature by feature, against the server API (/a
 
 | Feature | Windows | Mac | iPhone/iPad | Android | Quest | Notes |
 | --- | :---: | :---: | :---: | :---: | :---: | --- |
-| **Home Assistant connection**<br>Check the server-configured bridge with an admin token. Wireframe: [home-assistant-connection](wireframes/home-assistant-connection.svg) | ● | · | · | · | · | **Windows:** Settings → Smart home, Admin token. **Mac:** Only the personal Home Assistant connection (/me/home-assistant) is offered; see personal-connections. **iPhone/iPad:** Only the personal Home Assistant connection (/me/home-assistant) is offered; see personal-connections. |
+| **Home Assistant connection**<br>Check the server-configured bridge with an admin token. Wireframe: [home-assistant-connection](wireframes/home-assistant-connection.svg) | ● | · | · | · | · | **Windows:** Settings → Smart home, Admin token. **Mac:** Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections. **iPhone/iPad:** Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections. |
 | **Home Assistant entities**<br>Browse and filter entities, inspect their states and attributes, and poll while visible. Wireframe: [home-assistant](wireframes/home-assistant.svg) | ● | · | · | · | · | **Windows:** Polls entity states every ten seconds while visible. |
 | **Home Assistant actions**<br>Discover services, send service data, and inspect receipts without automatic retries. Wireframe: [home-assistant-action](wireframes/home-assistant-action.svg), [home-assistant](wireframes/home-assistant.svg) | ● | · | · | · | · |  |
 | **Home Assistant events**<br>Send an event to an existing Home Assistant automation; no event subscription. Wireframe: [home-assistant-event](wireframes/home-assistant-event.svg) | ● | · | · | · | · |  |
@@ -219,7 +220,6 @@ What each Briareus client offers, feature by feature, against the server API (/a
 | Feature | Windows | Mac | iPhone/iPad | Android | Quest | Notes |
 | --- | :---: | :---: | :---: | :---: | :---: | --- |
 | **Menu device status**<br>Proposed collapsible menu block for local CPU, memory, and battery readings; telemetry is not implemented by this change. Wireframe: [menu-status](wireframes/menu-status.svg), [home-assistant](wireframes/home-assistant.svg) | · | · | · | · | · | **Windows:** Proposed This computer block with available CPU, memory, and battery readings. **Mac:** Same proposed desktop layout as Windows. **iPhone/iPad:** Proposed This device block, battery first; omit metrics the OS cannot supply. **Quest:** Proposed This device block with headset.type sizing; omit unsupported metrics. **Android:** Proposed This device block like iPhone, battery first; omit metrics the OS cannot supply. |
-| **Now playing**<br>The sidebar foot shows what Spotify or another media app is playing, with previous, play/pause, next and volume. Wireframe: not drawn yet. | ● | ● | · | · | · | **Windows:** Through Windows media sessions. **Mac:** Through Apple Events and Core Audio. |
 
 ## Retired features
 

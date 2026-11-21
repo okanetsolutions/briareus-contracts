@@ -1036,7 +1036,7 @@
         {
           "id": "review-list",
           "title": "Review List",
-          "description": "A tab of PRs waiting on your review (required-dev-review / feedback-implemented).",
+          "description": "A tab of PRs waiting on your review (requires-dev-review / feedback-implemented).",
           "api": [
             "GET /pulls"
           ],
@@ -1966,14 +1966,14 @@
             "windows": "n/a",
             "mac": "n/a",
             "ios": "full",
-            "android": "none",
+            "android": "n/a",
             "quest": "n/a"
           },
           "notes": {
             "windows": "No CarPlay on Windows.",
             "mac": "No CarPlay on macOS.",
             "ios": "iOS 26.4 or later; dictation only, the app never speaks.",
-            "android": "CarPlay is Apple-only; the Android counterpart (Android Auto) is not built.",
+            "android": "CarPlay is Apple-only; Android Auto would be a feature of its own.",
             "quest": "No CarPlay or car integration on Quest."
           }
         }
@@ -2187,7 +2187,7 @@
         {
           "id": "detached-windows",
           "title": "Detached windows / panels",
-          "description": "Pop a conversation, findings, dashboard or browser into its own window/panel.",
+          "description": "Pop a conversation, the Findings screen, dashboard or browser into its own window/panel.",
           "api": [],
           "support": {
             "windows": "full",
@@ -2244,6 +2244,24 @@
             "quest": "none"
           },
           "notes": {},
+          "undrawn": "Windows offers it, but no wireframe draws it yet."
+        },
+        {
+          "id": "media-player",
+          "title": "Now playing",
+          "description": "The sidebar foot shows what Spotify or another media app is playing, with previous, play/pause, next and volume.",
+          "api": [],
+          "support": {
+            "windows": "full",
+            "mac": "full",
+            "ios": "none",
+            "android": "none",
+            "quest": "none"
+          },
+          "notes": {
+            "windows": "Through Windows media sessions.",
+            "mac": "Through Apple Events and Core Audio."
+          },
           "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
@@ -2336,8 +2354,8 @@
           },
           "notes": {
             "windows": "Settings → Smart home, Admin token.",
-            "mac": "Only the personal Home Assistant connection (/me/home-assistant) is offered; see personal-connections.",
-            "ios": "Only the personal Home Assistant connection (/me/home-assistant) is offered; see personal-connections."
+            "mac": "Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections.",
+            "ios": "Only the personal Home Assistant connection (/me/home-assistant) is offered; see Personal connections."
           },
           "wireframes": [
             "home-assistant-connection"
@@ -2434,24 +2452,6 @@
             "menu-status",
             "home-assistant"
           ]
-        },
-        {
-          "id": "media-player",
-          "title": "Now playing",
-          "description": "The sidebar foot shows what Spotify or another media app is playing, with previous, play/pause, next and volume.",
-          "api": [],
-          "support": {
-            "windows": "full",
-            "mac": "full",
-            "ios": "none",
-            "android": "none",
-            "quest": "none"
-          },
-          "notes": {
-            "windows": "Through Windows media sessions.",
-            "mac": "Through Apple Events and Core Audio."
-          },
-          "undrawn": "Windows offers it, but no wireframe draws it yet."
         }
       ]
     }
