@@ -12,6 +12,6 @@
     "check": "npm run build && npm test && git diff --exit-code -- dist FEATURES.md"
   },
   "devDependencies": {
-    "style-dictionary": "5.6.1"
+    "style-dictionary": "5.7.1"
   }
 }
